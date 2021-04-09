@@ -42,6 +42,8 @@ import HourglassFullIcon from '@material-ui/icons/HourglassFull';
 import ReportIcon from '@material-ui/icons/Report';
 import DeleteIcon from '@material-ui/icons/Delete';
 import LabelIcon from '@material-ui/icons/Label';
+import SettingsIcon from '@material-ui/icons/Settings';
+import AddIcon from '@material-ui/icons/Add';
 // connstant sidedrawer width
 const drawerWidth = 240;
 // styles for navbar and side drawer
@@ -384,6 +386,14 @@ export default function MiniDrawer() {
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><LabelIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Categories" />
+            </ListItem>
+            <ListItem button className={classes.onHoverColor} >
+              <ListItemIcon><SettingsIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+              <ListItemText primary="Manage Labels" />
+            </ListItem>
+            <ListItem button className={classes.onHoverColor} >
+              <ListItemIcon><AddIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+              <ListItemText primary="Create Labels" />
             </ListItem>
             </> 
             :
