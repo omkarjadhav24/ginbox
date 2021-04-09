@@ -1,4 +1,5 @@
 import React from 'react';
+import './sidedrawer.css';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -29,6 +30,7 @@ import AppsIcon from '@material-ui/icons/Apps';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import { BorderBottom } from '@material-ui/icons';
 // connstant sidedrawer width
 const drawerWidth = 240;
 // styles for navbar and side drawer
@@ -45,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBarShift: {
     marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
+    // width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -163,6 +165,9 @@ const useStyles = makeStyles((theme) => ({
   },
   arrowDropDownIcon:{
       marginLeft:'440px'
+  },
+  removingBoxShadow:{
+      boxShadow:'0px 0px 1px 0px'
   }
 }));
 
@@ -191,7 +196,7 @@ export default function MiniDrawer() {
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
-        })}
+        },classes.removingBoxShadow)}
       >
         <Toolbar>
           <IconButton
