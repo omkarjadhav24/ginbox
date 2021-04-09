@@ -1,4 +1,5 @@
 import React from 'react';
+import './navbar.css'
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,14 +15,17 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-
+import AppsIcon from '@material-ui/icons/Apps';
+import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
+//   menuButton: {
+//     marginRight: theme.spacing(2),
+//   },
   title: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
@@ -30,17 +34,21 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    borderRadius: '8px',
+    backgroundColor: '#f1f3f4',
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: '#f1f3f4',
     },
-    marginRight: theme.spacing(2),
+    '&$focused': {
+        backgroundColor: 'white',
+      },
+    // marginRight: theme.spacing(1),
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
+      marginLeft: '86px',
+      width: '729px',
+      height:'46px'
     },
   },
   searchIcon: {
@@ -61,6 +69,10 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
+    '&$focused': {
+        backgroundColor: 'white',
+      },
+    marginTop:'7px',
     [theme.breakpoints.up('md')]: {
       width: '20ch',
     },
@@ -77,6 +89,9 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+  arrowDropDownIcon:{
+      marginLeft:'440px'
+  }
 }));
 
 const NavBar=()=> {
@@ -163,7 +178,7 @@ const NavBar=()=> {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar style={{color:'black',backgroundColor:'white'}} position="static">
         <Toolbar>
           <IconButton
             edge="start"
@@ -173,36 +188,49 @@ const NavBar=()=> {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
-          </Typography>
+          <img class="gb_uc" src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r2.png" srcset="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_2x_r2.png 2x ,https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r2.png 1x" alt="" aria-hidden="true" style={{ width:'109px',height:'40px'}}/>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search…"
+              placeholder="Search mail"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
-              inputProps={{ 'aria-label': 'search' }}
+              inputProps={
+                { 'aria-label': 'search' }}
             />
+            <IconButton className={classes.arrowDropDownIcon}><ArrowDropDownIcon  /></IconButton>
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
+            <IconButton
+              aria-label="google apps"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <HelpOutlineIcon/> 
             </IconButton>
             <IconButton
-              edge="end"
+              aria-label="google apps"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <SettingsOutlinedIcon/> 
+            </IconButton>
+            <IconButton
+              aria-label="google apps"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <AppsIcon/> 
+            </IconButton>
+            <IconButton
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
@@ -220,7 +248,7 @@ const NavBar=()=> {
               onClick={handleMobileMenuOpen}
               color="inherit"
             >
-              <MoreIcon />
+              <MoreIcon /> 
             </IconButton>
           </div>
         </Toolbar>
