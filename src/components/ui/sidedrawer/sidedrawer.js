@@ -34,6 +34,14 @@ import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import GradeRoundedIcon from '@material-ui/icons/GradeRounded';
 import WatchLaterRoundedIcon from '@material-ui/icons/WatchLaterRounded';
 import SendIcon from '@material-ui/icons/Send';
+import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
+import ExpandLessRoundedIcon from '@material-ui/icons/ExpandLessRounded';
+import LabelImportantRoundedIcon from '@material-ui/icons/LabelImportantRounded';
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import HourglassFullIcon from '@material-ui/icons/HourglassFull';
+import ReportIcon from '@material-ui/icons/Report';
+import DeleteIcon from '@material-ui/icons/Delete';
+import LabelIcon from '@material-ui/icons/Label';
 // connstant sidedrawer width
 const drawerWidth = 240;
 // styles for navbar and side drawer
@@ -173,13 +181,30 @@ const useStyles = makeStyles((theme) => ({
       boxShadow:'0px 0px 0.7px 0px'
   },
   inconSizeDecrease:{
-      fontSize:'20px',
-      fontWeight:'bold'
-  },
-  textFontSizeDecrease:{
-    fontSize:'20px',
-    fontWeight:'bold'
-  }
+      fontSize:'20px' 
+     },
+  coluringToTheInbox:{
+      color:'#da3125',
+      backgroundColor:'rgba(255, 0, 0, 0.2)',
+      width:'200px',
+      borderRadius:"0px 12px 12px 0px"
+    },
+    inboxIconRedColor:{
+      color:'#da3125',
+      paddingTop:'5px'
+
+    },
+    onHoverColor:{
+        width:'200px',
+        borderRadius:"0px 12px 12px 0px"
+    },
+    divBackgroundColor:{
+      backgroundColor:'rgba(255, 0, 0, 0.2)',
+      borderRadius:'50%'
+    },
+    heightOfUl:{
+        height:'257px'
+    }
 }));
 
 export default function MiniDrawer() {
@@ -189,13 +214,23 @@ export default function MiniDrawer() {
   const theme = useTheme();
   // states
   const [open, setOpen] = React.useState(false);
+  const [more, setMore] = React.useState(false);
+
   
   // for toggling the side bar onClick
   const handleDrawerOpen = () => {
     let prevOpen=open
     setOpen(!prevOpen);
   };
-
+  // for showing more list in sidebar
+  const showMoreList=()=>{
+    let prevMore=more;
+    setMore(!prevMore);
+  }
+  // on mouse hove show the side drawer
+//   const mouseOverDrawerOpen=()=>{
+//     setOpen(true)
+//   }
 //   const handleDrawerClose = () => {
 //     setOpen(false);
 //   };
@@ -279,6 +314,7 @@ export default function MiniDrawer() {
       </AppBar>
       <Drawer
         variant="permanent"
+        // onMouseOver={()=>mouseOverDrawerOpen()}
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
           [classes.drawerClose]: !open,
@@ -295,22 +331,68 @@ export default function MiniDrawer() {
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </div>
-        <Divider />
-        <List style={{paddingLeft:'6px'}} dense={true}>
-            <ListItem button >
-              <ListItemIcon><InboxIcon className={classes.inconSizeDecrease}/></ListItemIcon>
-              <ListItemText style={{fontWeight:'bold'}} primary="Inbox" />
+        {/* <Divider /> */}
+        <List  className={classes.heightOfUl} dense={true}>
+            <ListItem button className={!open ?null:classes.coluringToTheInbox} >
+              <ListItemIcon><div className={open ? null :classes.divBackgroundColor} >
+              <InboxIcon className={classes.inconSizeDecrease} className={classes.inboxIconRedColor}/>
+              </div></ListItemIcon>
+              <ListItemText id="boldText" primary="Inbox" />
             </ListItem>
-            <ListItem button >
+            <ListItem button className={classes.onHoverColor}>
               <ListItemIcon><GradeRoundedIcon className={classes.inconSizeDecrease} /></ListItemIcon>
               <ListItemText primary="Starred" />
-            </ListItem> <ListItem button >
+            </ListItem> 
+            <ListItem button className={classes.onHoverColor}>
               <ListItemIcon><WatchLaterRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Snoozed" />
-            </ListItem> <ListItem button >
+            </ListItem> 
+            <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><SendIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Sent" />
             </ListItem>
+            {more ?
+            <>
+              <ListItem button onClick={()=>showMoreList()} className={classes.onHoverColor} >
+              <ListItemIcon><ExpandLessRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+              <ListItemText primary="Less" />
+            </ListItem>
+            <ListItem button className={classes.onHoverColor} >
+              <ListItemIcon><LabelImportantRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+              <ListItemText primary="Important" />
+            </ListItem>
+            <ListItem button className={classes.onHoverColor} >
+              <ListItemIcon><WhatsAppIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+              <ListItemText primary="Chats" />
+            </ListItem>
+            <ListItem button className={classes.onHoverColor} >
+              <ListItemIcon><HourglassFullIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+              <ListItemText primary="Schedule" />
+            </ListItem>
+            <ListItem button className={classes.onHoverColor} >
+              <ListItemIcon><MailIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+              <ListItemText primary="All Mail" />
+            </ListItem>
+            <ListItem button className={classes.onHoverColor} >
+              <ListItemIcon><ReportIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+              <ListItemText primary="Spam" />
+            </ListItem>
+            <ListItem button className={classes.onHoverColor} >
+              <ListItemIcon><DeleteIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+              <ListItemText primary="Trash" />
+            </ListItem>
+            <ListItem button className={classes.onHoverColor} >
+              <ListItemIcon><LabelIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+              <ListItemText primary="Categories" />
+            </ListItem>
+            </> 
+            :
+            <>
+             <ListItem button onClick={()=>showMoreList()} className={classes.onHoverColor} >
+              <ListItemIcon><ExpandMoreRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+              <ListItemText primary="More" />
+            </ListItem>
+            </>}
         </List>
         <Divider />
         <List>
