@@ -1,4 +1,5 @@
 import React from 'react';
+import './sidedrawer.css'
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -170,6 +171,14 @@ const useStyles = makeStyles((theme) => ({
   },
   removingBoxShadow:{
       boxShadow:'0px 0px 0.7px 0px'
+  },
+  inconSizeDecrease:{
+      fontSize:'20px',
+      fontWeight:'bold'
+  },
+  textFontSizeDecrease:{
+    fontSize:'20px',
+    fontWeight:'bold'
   }
 }));
 
@@ -287,19 +296,19 @@ export default function MiniDrawer() {
           </IconButton>
         </div>
         <Divider />
-        <List>
+        <List style={{paddingLeft:'6px'}} dense={true}>
             <ListItem button >
-              <ListItemIcon><InboxIcon /></ListItemIcon>
-              <ListItemText primary="Inbox" />
+              <ListItemIcon><InboxIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+              <ListItemText style={{fontWeight:'bold'}} primary="Inbox" />
             </ListItem>
             <ListItem button >
-              <ListItemIcon><GradeRoundedIcon /></ListItemIcon>
+              <ListItemIcon><GradeRoundedIcon className={classes.inconSizeDecrease} /></ListItemIcon>
               <ListItemText primary="Starred" />
             </ListItem> <ListItem button >
-              <ListItemIcon><WatchLaterRoundedIcon /></ListItemIcon>
+              <ListItemIcon><WatchLaterRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Snoozed" />
             </ListItem> <ListItem button >
-              <ListItemIcon><SendIcon /></ListItemIcon>
+              <ListItemIcon><SendIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Sent" />
             </ListItem>
         </List>
