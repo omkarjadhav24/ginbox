@@ -29,8 +29,9 @@ import AppsIcon from '@material-ui/icons/Apps';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+// connstant sidedrawer width
 const drawerWidth = 240;
-
+// styles for navbar and side drawer
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -166,39 +167,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MiniDrawer() {
+    // consume all styles
   const classes = useStyles();
-  
+  // access the currently active theme. You can use it in your own components to have them respond to changes in the theme
   const theme = useTheme();
+  // states
   const [open, setOpen] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
+  
+  // for toggling the side bar onClick
   const handleDrawerOpen = () => {
-    setOpen(true);
+    let prevOpen=open
+    setOpen(!prevOpen);
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+//   const handleDrawerClose = () => {
+//     setOpen(false);
+//   };
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -261,7 +245,6 @@ export default function MiniDrawer() {
             <IconButton
               aria-label="account of current user"
               aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
               color="inherit"
             >
               <AccountCircle />
@@ -271,7 +254,6 @@ export default function MiniDrawer() {
             <IconButton
               aria-label="show more"
               aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
               color="inherit"
             >
               <MoreIcon /> 
@@ -293,7 +275,7 @@ export default function MiniDrawer() {
         }}
       >
         <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton >
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </div>
