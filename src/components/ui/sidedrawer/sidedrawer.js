@@ -29,7 +29,10 @@ import AppsIcon from '@material-ui/icons/Apps';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import { BorderBottom } from '@material-ui/icons';
+import AddRoundedIcon from '@material-ui/icons/AddRounded';
+import GradeRoundedIcon from '@material-ui/icons/GradeRounded';
+import WatchLaterRoundedIcon from '@material-ui/icons/WatchLaterRounded';
+import SendIcon from '@material-ui/icons/Send';
 // connstant sidedrawer width
 const drawerWidth = 240;
 // styles for navbar and side drawer
@@ -166,7 +169,7 @@ const useStyles = makeStyles((theme) => ({
       marginLeft:'440px'
   },
   removingBoxShadow:{
-      boxShadow:'0px 0px 1px 0px'
+      boxShadow:'0px 0px 0.7px 0px'
   }
 }));
 
@@ -285,12 +288,20 @@ export default function MiniDrawer() {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+            <ListItem button >
+              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemText primary="Inbox" />
             </ListItem>
-          ))}
+            <ListItem button >
+              <ListItemIcon><GradeRoundedIcon /></ListItemIcon>
+              <ListItemText primary="Starred" />
+            </ListItem> <ListItem button >
+              <ListItemIcon><WatchLaterRoundedIcon /></ListItemIcon>
+              <ListItemText primary="Snoozed" />
+            </ListItem> <ListItem button >
+              <ListItemIcon><SendIcon /></ListItemIcon>
+              <ListItemText primary="Sent" />
+            </ListItem>
         </List>
         <Divider />
         <List>
