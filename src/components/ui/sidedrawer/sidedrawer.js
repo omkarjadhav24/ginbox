@@ -261,6 +261,7 @@ export default function MiniDrawer() {
   const [open, setOpen] = React.useState(false);
   const [ropen, setROpen] = React.useState(false);
   const [more, setMore] = React.useState(false);
+  const [categories, setCategories] = React.useState(false);
 
   
   // for toggling the side bar onClick
@@ -277,6 +278,11 @@ export default function MiniDrawer() {
   const showMoreList=()=>{
     let prevMore=more;
     setMore(!prevMore);
+  }
+  // show categories on click
+  const categoriesHandler=()=>{
+    let prevCateories=categories
+    setCategories(true)
   }
   // on mouse hove show the side drawer
 //   const mouseOverDrawerOpen=()=>{
@@ -432,38 +438,41 @@ export default function MiniDrawer() {
               <ListItemIcon><DeleteIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Trash" />
             </ListItem>
-            <ListItem button className={classes.onHoverColor} >
+            <ListItem button  onClick={()=>categoriesHandler()} className={classes.onHoverColor} >
               <ListItemIcon><LabelIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Categories" />
             </ListItem>
+            {categories ? 
             <Collapse in={open} timeout="auto" unmountOnExit>
-        <List dense={true} component="div" disablePadding>
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Social" />
-          </ListItem>
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <InfoIcon />
-            </ListItemIcon>
-            <ListItemText primary="Updates" />
-          </ListItem>
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <ForumIcon />
-            </ListItemIcon>
-            <ListItemText primary="Forums" />
-          </ListItem>
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <LocalOfferIcon />
-            </ListItemIcon>
-            <ListItemText primary="Promotions" />
-          </ListItem>
-        </List>
-      </Collapse>
+            <List dense={true} component="div" disablePadding>
+              <ListItem button className={classes.nested}>
+                <ListItemIcon>
+                  <PeopleIcon />
+                </ListItemIcon>
+                <ListItemText primary="Social" />
+              </ListItem>
+              <ListItem button className={classes.nested}>
+                <ListItemIcon>
+                  <InfoIcon />
+                </ListItemIcon>
+                <ListItemText primary="Updates" />
+              </ListItem>
+              <ListItem button className={classes.nested}>
+                <ListItemIcon>
+                  <ForumIcon />
+                </ListItemIcon>
+                <ListItemText primary="Forums" />
+              </ListItem>
+              <ListItem button className={classes.nested}>
+                <ListItemIcon>
+                  <LocalOfferIcon />
+                </ListItemIcon>
+                <ListItemText primary="Promotions" />
+              </ListItem>
+            </List>
+          </Collapse>  
+          : null
+          }
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><SettingsIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Manage Labels" />
