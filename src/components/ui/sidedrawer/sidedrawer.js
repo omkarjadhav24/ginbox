@@ -61,6 +61,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 // connstant sidedrawer width
 const drawerWidth = 240;
+// for right side drawer
 const rightdrawerWidth=56;
 // styles for navbar and side drawer
 const useStyles = makeStyles((theme) => ({
