@@ -1,6 +1,6 @@
-/* .MuiTypography-displayBlock{
+.MuiTypography-displayBlock:hover{
     font-weight: bold !important;
-} */
+}
 .MuiListItem-button{
     height: 32px !important;
     padding: 0px 12px 0px 26px;
@@ -16,4 +16,7 @@
     /* height: 257px !important; */
     overflow-inline: hidden !important;
     overflow-y: auto !important;
+}
+.MuiListItemIcon-root{
+    margin-left: 8px !important;
 }
