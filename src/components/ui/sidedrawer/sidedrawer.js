@@ -245,7 +245,7 @@ const useStyles = makeStyles((theme) => ({
       borderRadius:'50%'
     },
     heightOfUl:{
-        height:'257px'
+        height:'170px'
     },
     nested: {
       paddingLeft: theme.spacing(4),
@@ -388,8 +388,12 @@ export default function MiniDrawer() {
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </div>
+        <div id="plusDiv"  height="50px" width="50px"  style={{content:'',padding:'0px 0px 0px 13px',display:'flex',alignItems:'center',marginLeft:'7px',marginTop:'10px',marginBottom:'10px'}} >
+              <img src="https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png" alt=""/>
+            </div>
         {/* <Divider /> */}
         <List  className={classes.heightOfUl} dense={true}>
+            
             <ListItem button className={!open ?null:classes.coluringToTheInbox} >
               <ListItemIcon><div className={open ? null :classes.divBackgroundColor} >
               <InboxIcon className={classes.inconSizeDecrease} className={classes.inboxIconRedColor}/>
@@ -568,6 +572,7 @@ export default function MiniDrawer() {
           </IconButton>
         </div>
         <Divider />
+      
         <List >
         <ListItem   >
           <DateRangeIcon style={{marginTop:"15px"}}/>
