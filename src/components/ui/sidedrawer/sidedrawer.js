@@ -59,6 +59,7 @@ import Collapse from '@material-ui/core/Collapse';
 import StarBorder from '@material-ui/icons/StarBorder';
 import InfoIcon from '@material-ui/icons/Info';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import Tooltip from '@material-ui/core/Tooltip';
 // connstant sidedrawer width
 const drawerWidth = 240;
 // for right side drawer
@@ -325,31 +326,39 @@ export default function MiniDrawer() {
               inputProps={
                 { 'aria-label': 'search' }}
             />
-            <IconButton className={classes.arrowDropDownIcon}><ArrowDropDownIcon  /></IconButton>
+            <IconButton className={classes.arrowDropDownIcon}>
+          <Tooltip title="Show search options" placement="bottom">
+              <ArrowDropDownIcon  />
+          </Tooltip>
+              </IconButton>
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+          <Tooltip title="Support" placement="bottom">
             <IconButton
-              aria-label="google apps"
               aria-haspopup="true"
               color="inherit"
             >
               <HelpOutlineIcon/> 
             </IconButton>
+          </Tooltip>
+          <Tooltip title="Settings" placement="bottom">
             <IconButton
-              aria-label="google apps"
               aria-haspopup="true"
               color="inherit"
             >
               <SettingsOutlinedIcon/> 
             </IconButton>
+          </Tooltip>
+          <Tooltip title="Google apps" placement="bottom">
             <IconButton
-              aria-label="google apps"
               aria-haspopup="true"
               color="inherit"
             >
               <AppsIcon/> 
             </IconButton>
+          </Tooltip>
+          <Tooltip title="Google Account" placement="bottom">
             <IconButton
               aria-label="account of current user"
               aria-haspopup="true"
@@ -357,6 +366,7 @@ export default function MiniDrawer() {
             >
               <AccountCircle />
             </IconButton>
+          </Tooltip>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -393,105 +403,142 @@ export default function MiniDrawer() {
             </div>
         {/* <Divider /> */}
         <List  className={classes.heightOfUl} dense={true}>
-            
+        <Tooltip title="Inbox" placement="right-start">
             <ListItem button className={!open ?null:classes.coluringToTheInbox} >
               <ListItemIcon><div className={open ? null :classes.divBackgroundColor} >
               <InboxIcon className={classes.inconSizeDecrease} className={classes.inboxIconRedColor}/>
               </div></ListItemIcon>
               <ListItemText id="boldText" primary="Inbox" />
             </ListItem>
+        </Tooltip>
+        <Tooltip title="Starred" placement="right-start">
             <ListItem button className={classes.onHoverColor}>
               <ListItemIcon><GradeRoundedIcon className={classes.inconSizeDecrease} /></ListItemIcon>
               <ListItemText primary="Starred" />
             </ListItem> 
+        </Tooltip>
+        <Tooltip title="Snoozed" placement="right-start">
             <ListItem button className={classes.onHoverColor}>
               <ListItemIcon><WatchLaterRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Snoozed" />
             </ListItem> 
+        </Tooltip>
+        <Tooltip title="Sent" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><SendIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Sent" />
             </ListItem>
+        </Tooltip>
             {more ?
             <>
+        <Tooltip title="Less" placement="right-start">
               <ListItem button onClick={()=>showMoreList()} className={classes.onHoverColor} >
               <ListItemIcon><ExpandLessRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Less" />
             </ListItem>
-            <ListItem button className={classes.onHoverColor} >
+        </Tooltip>
+        <Tooltip title="Important" placement="right-start">
+        <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><LabelImportantRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Important" />
             </ListItem>
+        </Tooltip>
+        <Tooltip title="Chats" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><WhatsAppIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Chats" />
             </ListItem>
+        </Tooltip>
+        <Tooltip title="Schedule" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><HourglassFullIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Schedule" />
             </ListItem>
+        </Tooltip>
+        <Tooltip title="All Mail" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><MailIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="All Mail" />
             </ListItem>
+        </Tooltip>
+        <Tooltip title="Spam" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><ReportIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Spam" />
             </ListItem>
+        </Tooltip>
+        <Tooltip title="Trash" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><DeleteIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Trash" />
             </ListItem>
+        </Tooltip>
+        <Tooltip title="Categories" placement="right-start">
             <ListItem button  onClick={()=>categoriesHandler()} className={classes.onHoverColor} >
               <ListItemIcon><LabelIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Categories" />
             </ListItem>
+        </Tooltip>
             {categories ? 
             <Collapse in={open} timeout="auto" unmountOnExit>
             <List dense={true} component="div" disablePadding>
+            <Tooltip title="Social" placement="right-start">
               <ListItem button className={classes.nested}>
                 <ListItemIcon>
                   <PeopleIcon />
                 </ListItemIcon>
                 <ListItemText primary="Social" />
               </ListItem>
+            </Tooltip>
+            <Tooltip title="Updates" placement="right-start">
               <ListItem button className={classes.nested}>
                 <ListItemIcon>
                   <InfoIcon />
                 </ListItemIcon>
                 <ListItemText primary="Updates" />
               </ListItem>
+            </Tooltip>
+            <Tooltip title="Forums" placement="right-start">
               <ListItem button className={classes.nested}>
                 <ListItemIcon>
                   <ForumIcon />
                 </ListItemIcon>
                 <ListItemText primary="Forums" />
               </ListItem>
+            </Tooltip>
+            <Tooltip title="Promotions" placement="right-start">
               <ListItem button className={classes.nested}>
                 <ListItemIcon>
                   <LocalOfferIcon />
                 </ListItemIcon>
                 <ListItemText primary="Promotions" />
               </ListItem>
+            </Tooltip>
             </List>
           </Collapse>  
           : null
           }
+            <Tooltip title="Manage Labels" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><SettingsIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Manage Labels" />
             </ListItem>
+            </Tooltip>
+            <Tooltip title="Create Labels" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><AddIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Create Labels" />
             </ListItem>
+            </Tooltip>
             </> 
             :
             <>
+            <Tooltip title="More" placement="right-start">
              <ListItem button onClick={()=>showMoreList()} className={classes.onHoverColor} >
               <ListItemIcon><ExpandMoreRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="More" />
             </ListItem>
+            </Tooltip>
             </>}
         </List>
         <Divider />
@@ -502,32 +549,40 @@ export default function MiniDrawer() {
             //   </ListSubheader>
             // }
         >
-          <ListItem button className={classes.onHoverColor} >
+          <ListItem  >
             
           {open ?  <p id="pMarginLeft" >Meet</p> :
           <ListItemIcon><VideocamOutlinedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
           }
           </ListItem>
-          <ListItem button className={classes.onHoverColor} >
+          <Tooltip title="New meetings" placement="right-start">
+          <ListItem  style={{cursor:'pointer'}} >
           <ListItemIcon><VideocamIcon className={classes.inconSizeDecrease}/></ListItemIcon>
           <ListItemText primary="New meetings" />
           </ListItem>
-          <ListItem button className={classes.onHoverColor} >
+          </Tooltip>
+          <Tooltip title="My meetings" placement="right-start">
+          <ListItem style={{cursor:'pointer'}}  >
           <ListItemIcon><EventIcon className={classes.inconSizeDecrease}/></ListItemIcon>
           <ListItemText primary="My meetings" />
           </ListItem>
+          </Tooltip>
         </List>
         <Divider />
         <List>
-        <ListItem button className={classes.onHoverColor} >
+        <ListItem button  >
             
             {open ?  <p id="pMarginLeft" >Hangouts</p> :
             <ListItemIcon><ForumIcon className={classes.inconSizeDecrease}/></ListItemIcon>
             }
             </ListItem>
-          <ListItem button className={classes.onHoverColor} >
+          <ListItem button  >
           <ListItemIcon id="textMinWidth" ><AccountCircle color="primary" fontSize="large"  /></ListItemIcon>
-          {open ? <> <ListItemText primary="Omkar" />  <ArrowDropDownIcon id="iconMarginRight" fontSize="small" />  <AddIcon  fontSize="small"/></> :null}
+          {open ? <> <ListItemText primary="Omkar" />  <ArrowDropDownIcon id="iconMarginRight" fontSize="small" /> 
+          <Tooltip title="New Conversations" placement="right-start">
+          <AddIcon  fontSize="small"/>
+          </Tooltip>
+           </> :null}
           </ListItem>
         </List>
         <Divider />
@@ -572,28 +627,40 @@ export default function MiniDrawer() {
           </IconButton>
         </div>
         <Divider />
-      
+        <Tooltip title="Calender" placement="bottom">
+        <div style={{cursor:'pointer'}}>
+          <img style={{marginTop:"23px",marginLeft:'8px'}} width="20px" height="20px" src="https://www.gstatic.com/companion/icon_assets/calendar_2020q4_2x.png" alt=""/>
+        </div>
+        </Tooltip>
+        <Tooltip title="Keep" placement="bottom">
+        <div style={{cursor:'pointer'}}>
+          <img style={{marginTop:"31px",marginLeft:'8px'}} width="20px" height="20px" src="https://www.gstatic.com/companion/icon_assets/keep_2020q4v3_2x.png" alt=""/>
+        </div>
+        </Tooltip>
+        <Tooltip title="Tasks" placement="bottom">
+        <div style={{cursor:'pointer'}}>
+          <img style={{marginTop:"31px",marginLeft:'8px'}} width="20px" height="20px" src="https://www.gstatic.com/companion/icon_assets/tasks2_2x.png" alt=""/>
+        </div>
+        </Tooltip>
+        <Tooltip title="Contacts" placement="bottom">
+        <div style={{cursor:'pointer'}} >
+          <img style={{marginTop:"31px",marginLeft:'8px'}} width="20px" height="20px" src="https://www.gstatic.com/companion/icon_assets/contacts_2x.png" alt=""/>
+        </div>
+        </Tooltip>
         <List >
-        <ListItem   >
-          <DateRangeIcon style={{marginTop:"15px"}}/>
-        </ListItem>
-        <ListItem>
-          <EmojiObjectsIcon style={{marginTop:"15px"}}/>
-        </ListItem>
-        <ListItem>
-          <AssignmentTurnedInIcon style={{marginTop:"15px"}}/>
-        </ListItem>
-        <ListItem>
-          <AccountCircle style={{marginTop:"15px"}} color="primary"/>
-        </ListItem>
         <Divider style={{marginTop:"26px"}} />
+        <Tooltip title="Get Adds-ons" placement="left">
         <ListItem>
           <AddIcon className={classes.inconSizeDecrease} style={{marginTop:"25px"}}/>
         </ListItem>
+        </Tooltip>
         <ListItem onClick={()=>rightHandleDrawerOpen()} style={{cusrsor:"pointer"}} >
+        <Tooltip title="Hide Side Panel" placement="left">
         <ChevronRightIcon style={{marginTop:"215px",cursor:'pointer'}}/>
+        </Tooltip>
+
         </ListItem>
-        </List>
+        </List> 
         
       </Drawer>
       
