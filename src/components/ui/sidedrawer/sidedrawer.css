@@ -25,6 +25,11 @@
     cursor: text;
     font-weight: bold !important;
 }
+#pMarginLeftMeet{
+    margin-left: 20px;
+    cursor: text;
+    font-weight: bold !important;
+}
 /* #pMarginLeft:hover
 {
     background-color: rgba(255, 255, 255, 0) !important
@@ -72,7 +77,20 @@ width: 40px
 #plusDiv{
     border-radius: 50%;
     box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302),0 1px 3px 1px rgba(60,64,67,0.149);
-    height: 60px;
-    width: 60px;
+    height: 56px;
+    width: 56px;
     cursor: pointer;
+}
+#plusDivExpand{
+    border-radius: 50px 50px 50px 50px;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302),0 1px 3px 1px rgba(60,64,67,0.149);
+    height: 56px;
+    width: 170px;
+    cursor: pointer;
+}
+.MuiSelect-select.MuiSelect-select{
+    padding-right: 0px !important;
+}
+.MuiList-padding{
+    padding-top: 0px !important;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import './sidedrawer.css'
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles, useTheme} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -60,8 +60,9 @@ import StarBorder from '@material-ui/icons/StarBorder';
 import InfoIcon from '@material-ui/icons/Info';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import Tooltip from '@material-ui/core/Tooltip';
-import { DataGrid } from '@material-ui/data-grid';
-
+import Checkbox from '@material-ui/core/Checkbox';
+import Select from '@material-ui/core/Select';
+import RefreshIcon from '@material-ui/icons/Refresh';
 // connstant sidedrawer width
 const drawerWidth = 240;
 // for right side drawer
@@ -254,7 +255,6 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: theme.spacing(4),
     }
 }));
-
 const SideiDrawer=()=> {
     // consume all styles
   const classes = useStyles();
@@ -287,13 +287,14 @@ const SideiDrawer=()=> {
     let prevCateories=categories
     setCategories(true)
   }
-  // on mouse hove show the side drawer
-//   const mouseOverDrawerOpen=()=>{
-//     setOpen(true)
-//   }
-//   const handleDrawerClose = () => {
-//     setOpen(false);
-//   };
+  // on mouse hover show the side drawer
+  const mouseOverDrawerOpen=()=>{
+    setOpen(true)
+  }
+  // on mouse out close the side drawer
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -383,7 +384,8 @@ const SideiDrawer=()=> {
       </AppBar>
       <Drawer
         variant="permanent"
-        // onMouseOver={()=>mouseOverDrawerOpen()}
+        onMouseOver={()=>mouseOverDrawerOpen()}
+        onMouseOut={()=>handleDrawerClose()}
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
           [classes.drawerClose]: !open,
@@ -400,9 +402,19 @@ const SideiDrawer=()=> {
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </div>
-        <div id="plusDiv"  height="50px" width="50px"  style={{content:'',padding:'0px 0px 0px 13px',display:'flex',alignItems:'center',marginLeft:'7px',marginTop:'10px',marginBottom:'10px'}} >
+
+       
+        {open   ? 
+              <div id="plusDivExpand"   style={{content:'',padding:'0px 0px 0px 13px',display:'flex',alignItems:'center',marginLeft:'7px',marginTop:'10px',marginBottom:'10px'}} >
               <img src="https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png" alt=""/>
-            </div>
+              <p style={{marginLeft:'20px', fontWeight:'bold'}}>Compose</p>
+              </div>
+              :
+              <div id="plusDiv"   style={{content:'',padding:'0px 0px 0px 13px',display:'flex',alignItems:'center',marginLeft:'7px',marginTop:'10px',marginBottom:'10px'}} >
+              <img src="https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png" alt=""/>
+              </div>
+      }
+            
         {/* <Divider /> */}
         <List  className={classes.heightOfUl} dense={true}>
         <Tooltip title="Inbox" placement="right-start">
@@ -551,12 +563,14 @@ const SideiDrawer=()=> {
             //   </ListSubheader>
             // }
         >
+          <Tooltip title="Meet" placement="right-start">
+          {open ?  <p id="pMarginLeftMeet" >Meet</p> :
+
           <ListItem  >
-            
-          {open ?  <p id="pMarginLeft" >Meet</p> :
           <ListItemIcon><VideocamOutlinedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
-          }
           </ListItem>
+          }
+          </Tooltip>
           <Tooltip title="New meetings" placement="right-start">
           <ListItem  style={{cursor:'pointer'}} >
           <ListItemIcon><VideocamIcon className={classes.inconSizeDecrease}/></ListItemIcon>
@@ -591,9 +605,32 @@ const SideiDrawer=()=> {
       </Drawer>
       <main style={{overflow:'hidden'}} className={classes.content}>
         <div className={classes.toolbar} />
-         
-         
-          
+        <div>
+        <Checkbox
+            name="checkedB"
+            color="primary"
+          />
+           <Select
+          labelId="demo-customized-select-label"
+          id="demo-customized-select"
+        >
+          <MenuItem value={10}>All</MenuItem>
+          <MenuItem value={20}>None</MenuItem>
+          <MenuItem value={30}>Read</MenuItem>
+        </Select>
+        <RefreshIcon style={{ fontSize: 20  }} />
+        </div>
+        {/* <Box display="flex">
+        <Box p={1} bgcolor="grey.300">
+          Item 1
+        </Box>
+        <Box p={1} bgcolor="grey.300">
+          Item 2
+        </Box>
+        <Box p={1} bgcolor="grey.300">
+          Item 3
+        </Box>
+          </Box> */}
         <div  id="shoeRightBar" onClick={()=>rightHandleDrawerOpen()}  style={{width:'50px',position:'absolute',bottom:'0px',right:'-24px'}}>
         <ArrowBackIosIcon style={{marginLeft:'9px',fontSize:"15px"}}/>
         </div>
