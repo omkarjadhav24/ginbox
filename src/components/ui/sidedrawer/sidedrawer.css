@@ -20,3 +20,52 @@
 .MuiListItemIcon-root{
     margin-left: 8px !important;
 }
+#pMarginLeft{
+    margin-left: 10px;
+    cursor: text;
+    font-weight: bold !important;
+}
+/* #pMarginLeft:hover
+{
+    background-color: rgba(255, 255, 255, 0) !important
+} */
+#textMinWidth{
+    min-width: 0px !important;
+    overflow:hidden
+}
+#iconMarginRight{
+    margin-right: 20px !important;
+}
+.aT5-aOt-I-JX-Jw{
+background-color: transparent;
+background-repeat: no-repeat;
+overflow:hidden !important;
+background-position: center;
+background-size: 20px 20px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+height: 40px;
+left: 8px;
+pointer-events: auto;
+position: absolute;
+top: 8px;
+transition: all .3s cubic-bezier(.4,0,.2,1);
+width: 40px
+}
+#hideTheScroll{
+    overflow-inline: none !important;
+    overflow-y: none !important;
+}
+#shoeRightBar{
+    background-color: #f1f3f4;
+    position: relative;
+    margin-bottom: 42px;
+    padding: 5.9px 0px 0px 0px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    cursor: pointer;
+}
+#shoeRightBar:hover{
+    right: '-567px'  !important;
+}

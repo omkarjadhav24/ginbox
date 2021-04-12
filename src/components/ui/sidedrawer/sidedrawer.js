@@ -44,8 +44,24 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import LabelIcon from '@material-ui/icons/Label';
 import SettingsIcon from '@material-ui/icons/Settings';
 import AddIcon from '@material-ui/icons/Add';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import VideocamIcon from '@material-ui/icons/Videocam';
+import EventIcon from '@material-ui/icons/Event';
+import VideocamOutlinedIcon from '@material-ui/icons/VideocamOutlined';
+import ForumIcon from '@material-ui/icons/Forum';
+import Icon from '@material-ui/core/Icon';
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import PeopleIcon from '@material-ui/icons/People';
+import Collapse from '@material-ui/core/Collapse';
+import StarBorder from '@material-ui/icons/StarBorder';
+import InfoIcon from '@material-ui/icons/Info';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 // connstant sidedrawer width
 const drawerWidth = 240;
+const rightdrawerWidth=56;
 // styles for navbar and side drawer
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -83,6 +99,29 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
+  },
+  rightDrawer: {
+    width: rightdrawerWidth,
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
+  },
+  rightDrawerOpen:{
+    width: rightdrawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  rightDrawerClose: {
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    overflowX: 'hidden',
+    width: theme.spacing(7) + 1,
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(9) + 1,
+    },
   },
   drawerClose: {
     transition: theme.transitions.create('width', {
@@ -206,6 +245,9 @@ const useStyles = makeStyles((theme) => ({
     },
     heightOfUl:{
         height:'257px'
+    },
+    nested: {
+      paddingLeft: theme.spacing(4),
     }
 }));
 
@@ -216,6 +258,7 @@ export default function MiniDrawer() {
   const theme = useTheme();
   // states
   const [open, setOpen] = React.useState(false);
+  const [ropen, setROpen] = React.useState(false);
   const [more, setMore] = React.useState(false);
 
   
@@ -223,6 +266,11 @@ export default function MiniDrawer() {
   const handleDrawerOpen = () => {
     let prevOpen=open
     setOpen(!prevOpen);
+  };
+  // for toggling the right side bar onClick
+  const rightHandleDrawerOpen = () => {
+    let prevROpen=ropen
+    setROpen(!prevROpen);
   };
   // for showing more list in sidebar
   const showMoreList=()=>{
@@ -387,6 +435,34 @@ export default function MiniDrawer() {
               <ListItemIcon><LabelIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Categories" />
             </ListItem>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+        <List dense={true} component="div" disablePadding>
+          <ListItem button className={classes.nested}>
+            <ListItemIcon>
+              <PeopleIcon />
+            </ListItemIcon>
+            <ListItemText primary="Social" />
+          </ListItem>
+          <ListItem button className={classes.nested}>
+            <ListItemIcon>
+              <InfoIcon />
+            </ListItemIcon>
+            <ListItemText primary="Updates" />
+          </ListItem>
+          <ListItem button className={classes.nested}>
+            <ListItemIcon>
+              <ForumIcon />
+            </ListItemIcon>
+            <ListItemText primary="Forums" />
+          </ListItem>
+          <ListItem button className={classes.nested}>
+            <ListItemIcon>
+              <LocalOfferIcon />
+            </ListItemIcon>
+            <ListItemText primary="Promotions" />
+          </ListItem>
+        </List>
+      </Collapse>
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><SettingsIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Manage Labels" />
@@ -405,16 +481,44 @@ export default function MiniDrawer() {
             </>}
         </List>
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+        <List  dense={true}
+            // subheader={
+            //   <ListSubheader component="div" id="nested-list-subheader">
+            //     Meet
+            //   </ListSubheader>
+            // }
+        >
+          <ListItem button className={classes.onHoverColor} >
+            
+          {open ?  <p id="pMarginLeft" >Meet</p> :
+          <ListItemIcon><VideocamOutlinedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+          }
+          </ListItem>
+          <ListItem button className={classes.onHoverColor} >
+          <ListItemIcon><VideocamIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+          <ListItemText primary="New meetings" />
+          </ListItem>
+          <ListItem button className={classes.onHoverColor} >
+          <ListItemIcon><EventIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+          <ListItemText primary="My meetings" />
+          </ListItem>
         </List>
+        <Divider />
+        <List>
+        <ListItem button className={classes.onHoverColor} >
+            
+            {open ?  <p id="pMarginLeft" >Hangouts</p> :
+            <ListItemIcon><ForumIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+            }
+            </ListItem>
+          <ListItem button className={classes.onHoverColor} >
+          <ListItemIcon id="textMinWidth" ><AccountCircle color="primary" fontSize="large"  /></ListItemIcon>
+          {open ? <> <ListItemText primary="Omkar" />  <ArrowDropDownIcon id="iconMarginRight" fontSize="small" />  <AddIcon  fontSize="small"/></> :null}
+          </ListItem>
+        </List>
+        <Divider />
       </Drawer>
-      <main className={classes.content}>
+      <main style={{overflow:'hidden'}} className={classes.content}>
         <div className={classes.toolbar} />
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -428,7 +532,57 @@ export default function MiniDrawer() {
           arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
           donec massa sapien faucibus et molestie ac.
         </Typography>
+          <div  id="shoeRightBar" onClick={()=>rightHandleDrawerOpen()}  style={{width:'50px',position:'absolute',bottom:'0px',right:'-24px'}}>
+          <ArrowBackIosIcon style={{marginLeft:'9px',fontSize:"15px"}}/>
+          </div>
       </main>
+      <Drawer
+        // className={classes.drawer}
+        variant="persistent"
+        anchor="right"
+        open={ropen}
+        className={clsx(classes.rightDrawer, {
+          [classes.rightDrawerOpen]: ropen,
+          [classes.rightDrawerClose]: !ropen,
+        })}
+        classes={{
+          paper: clsx({
+            [classes.rightDrawerOpen]: ropen,
+            [classes.rightDrawerClose]: !ropen,
+          }),
+        }}
+      >
+        <div className={classes.drawerHeader}>
+          <IconButton >
+            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          </IconButton>
+        </div>
+        <Divider />
+        <List >
+        <ListItem   >
+          <DateRangeIcon style={{marginTop:"15px"}}/>
+        </ListItem>
+        <ListItem>
+          <EmojiObjectsIcon style={{marginTop:"15px"}}/>
+        </ListItem>
+        <ListItem>
+          <AssignmentTurnedInIcon style={{marginTop:"15px"}}/>
+        </ListItem>
+        <ListItem>
+          <AccountCircle style={{marginTop:"15px"}} color="primary"/>
+        </ListItem>
+        <Divider style={{marginTop:"26px"}} />
+        <ListItem>
+          <AddIcon className={classes.inconSizeDecrease} style={{marginTop:"25px"}}/>
+        </ListItem>
+        <ListItem onClick={()=>rightHandleDrawerOpen()} style={{cusrsor:"pointer"}} >
+        <ChevronRightIcon style={{marginTop:"215px",cursor:'pointer'}}/>
+        </ListItem>
+        </List>
+        
+      </Drawer>
+      
+    
     </div>
   );
 }
