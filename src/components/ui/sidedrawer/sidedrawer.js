@@ -275,6 +275,9 @@ const useStyles = makeStyles((theme) => ({
         borderTop:'0.6px solid #bbc1bb5e',
         cursor:'pointer'
      }
+    },
+    paginationSpan:{
+
     }
 
 }));
@@ -669,7 +672,7 @@ const SideiDrawer=()=> {
           [classes.contentShift]: ropen,
         })}  >
         <div className={classes.toolbar} />
-        <div  style={{backgroundColor:'white', width:'12890px',overflow:'hidden'}}  >
+        <div  style={{backgroundColor:'white', width:open ? '1124px':ropen ? '1236px':'12890px',overflow:'hidden'}}  >
             <List style={{width:'100%'}} >
               <ListItem id="inboxFirstRow" >
               <Tooltip title="Select" placement="bottom">
@@ -692,11 +695,12 @@ const SideiDrawer=()=> {
                 <MoreVertIcon  fontSize="small"/>
                 </IconButton >
                 </Tooltip>
+                <span style={{position:'relative',left:open ? '810px':ropen ? '940px':'980px'}} className={classes.paginationSpan} >1 of 1 </span>
                 <Tooltip dense  title="Older" placement="bottom">
-                <ChevronRightIcon style={{position:'relative',left:'1069px'}} fontSize="small"/>
+                <ChevronRightIcon style={{position:'relative',left:open ? '891px' :ropen ? '1003px':'1050px'}} fontSize="small"/>
                 </Tooltip>
                 <Tooltip dense  title="Newer" placement="bottom">
-                <ChevronLeftIcon style={{position:'relative',left:'1009px'}} fontSize="small"/>
+                <ChevronLeftIcon style={{position:'relative',left:open ? '820px' :ropen ? '950px':'985px'}} fontSize="small"/>
                 </Tooltip>
               </ListItem>
               <ListItem className={classes.inboxListHover}  id="inboxList" style={{backgroundColor:'#f5f7f7'}}>
@@ -712,7 +716,7 @@ const SideiDrawer=()=> {
               </Tooltip>
               <span style={{position:'relative',left:'5px',fontSize:'.875rem',top:'2px',letterSpacing:'.2px'}} >GitHub</span>
               <span style={{position:'relative',left:'147px',width:'800px',fontSize:'.875rem',top:'2px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'"..."'}} >[GitHub] Please Verify Your Email Address</span>
-              <div  style={{position:'relative',left:'300px',fontSize:'.875rem',top:'2px'}} >
+              <div  style={{position:'relative',left:open ? '145px':ropen ?   '258px':'315px',fontSize:'.875rem',top:'2px'}} >
                 <span>
                   14 Apr
                 </span>
@@ -733,7 +737,7 @@ const SideiDrawer=()=> {
               </Tooltip>
               <span style={{position:'relative',left:'5px',fontSize:'.875rem',top:'2px',letterSpacing:'.2px'}} >GitHub</span>
               <span style={{position:'relative',left:'147px',width:'800px',fontSize:'.875rem',top:'2px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'"..."'}} >[GitHub] Please Verify Your Email Address</span>
-              <div  style={{position:'relative',left:'300px',fontSize:'.875rem',top:'2px'}} >
+              <div  style={{position:'relative',left:open ? '145px':ropen ?   '258px':'315px',fontSize:'.875rem',top:'2px'}} >
                 <span>
                   14 Apr
                 </span>
@@ -754,7 +758,7 @@ const SideiDrawer=()=> {
               </Tooltip>
               <span style={{position:'relative',left:'5px',fontSize:'.875rem',top:'2px',letterSpacing:'.2px'}} >GitHub</span>
               <span style={{position:'relative',left:'147px',width:'800px',fontSize:'.875rem',top:'2px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'"..."'}} >[GitHub] Please Verify Your Email Address</span>
-              <div  style={{position:'relative',left:'300px',fontSize:'.875rem',top:'2px'}} >
+              <div  style={{position:'relative',left:open ? '145px':ropen ?   '258px':'315px',fontSize:'.875rem',top:'2px'}} >
                 <span>
                   14 Apr
                 </span>
