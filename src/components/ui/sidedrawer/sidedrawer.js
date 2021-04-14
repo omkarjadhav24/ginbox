@@ -272,7 +272,8 @@ const useStyles = makeStyles((theme) => ({
         borderBottom:'2px solid #bbc1bb5e',
         borderRight:'0.4px solid #bbc1bb5e',
         borderLeft:'0.2px solid #bbc1bb5e',
-        borderTop:'0.6px solid #bbc1bb5e'
+        borderTop:'0.6px solid #bbc1bb5e',
+        cursor:'pointer'
      }
     }
 
