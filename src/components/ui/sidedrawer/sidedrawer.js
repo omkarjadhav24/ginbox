@@ -266,7 +266,16 @@ const useStyles = makeStyles((theme) => ({
         duration: theme.transitions.duration.enteringScreen,
       }),
       marginLeft: 0,
+    },
+    inboxListHover:{
+      '&:hover': {
+        borderBottom:'2px solid #bbc1bb5e',
+        borderRight:'0.4px solid #bbc1bb5e',
+        borderLeft:'0.2px solid #bbc1bb5e',
+        borderTop:'0.6px solid #bbc1bb5e'
+     }
     }
+
 }));
 const SideiDrawer=()=> {
     // consume all styles
@@ -692,7 +701,7 @@ const SideiDrawer=()=> {
                 <ChevronLeftIcon style={{position:'relative',left:'1009px'}} fontSize="small"/>
                 </Tooltip>
               </ListItem>
-              <ListItem   id="inboxList" style={{backgroundColor:'#f5f7f7'}}>
+              <ListItem className={classes.inboxListHover}  id="inboxList" style={{backgroundColor:'#f5f7f7'}}>
                 <>
               <Tooltip title="Select" placement="bottom">
               <Checkbox 
@@ -713,7 +722,7 @@ const SideiDrawer=()=> {
               </>
               </ListItem>
               <Divider/>
-              <ListItem style={{backgroundColor:'#f5f7f7'}}>
+              <ListItem className={classes.inboxListHover} style={{backgroundColor:'#f5f7f7'}}>
                 <>
               <Tooltip title="Select" placement="bottom">
               <Checkbox 
@@ -734,7 +743,7 @@ const SideiDrawer=()=> {
               </>
               </ListItem>
               <Divider/>
-               <ListItem style={{backgroundColor:'#f5f7f7'}}>
+               <ListItem className={classes.inboxListHover} style={{backgroundColor:'#f5f7f7'}}>
                 <>
               <Tooltip title="Select" placement="bottom">
               <Checkbox 
