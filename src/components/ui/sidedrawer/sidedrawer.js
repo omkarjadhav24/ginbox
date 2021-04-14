@@ -814,7 +814,7 @@ const SideiDrawer=()=> {
         </Tooltip>
         <ListItem onClick={()=>rightHandleDrawerOpen()} style={{cusrsor:"pointer"}} >
         <Tooltip title="Hide Side Panel" placement="left">
-        <ChevronRightIcon style={{marginTop:"215px",cursor:'pointer',position:'relative',right:'12px'}}/>
+        <ChevronRightIcon style={{marginTop:"250px",cursor:'pointer',position:'relative',right:'12px'}}/>
         </Tooltip>
 
         </ListItem>
