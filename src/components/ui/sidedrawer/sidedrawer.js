@@ -695,7 +695,7 @@ const SideiDrawer=()=> {
                 <MoreVertIcon  fontSize="small"/>
                 </IconButton >
                 </Tooltip>
-                <span style={{position:'relative',left:open ? '810px':ropen ? '940px':'980px'}} className={classes.paginationSpan} >1 of 1 </span>
+                <span style={{cursor:'pointer',position:'relative',left:open ? '810px':ropen ? '940px':'980px'}} className={classes.paginationSpan} >1 of 1 </span>
                 <Tooltip dense  title="Older" placement="bottom">
                 <ChevronRightIcon style={{position:'relative',left:open ? '891px' :ropen ? '1003px':'1050px'}} fontSize="small"/>
                 </Tooltip>
