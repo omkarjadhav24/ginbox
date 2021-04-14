@@ -334,9 +334,6 @@ const SideiDrawer=()=> {
     setAnchorEl(null);
     handleMobileMenuClose();
   };
-
-  
-
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
