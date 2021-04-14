@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './sidedrawer.css'
 import clsx from 'clsx';
 import { makeStyles, useTheme} from '@material-ui/core/styles';
@@ -291,12 +291,13 @@ const SideiDrawer=()=> {
   // access the currently active theme. You can use it in your own components to have them respond to changes in the theme
   const theme = useTheme();
   // states
-  const [open, setOpen] = React.useState(false);
-  const [ropen, setROpen] = React.useState(false);
-  const [more, setMore] = React.useState(false);
-  const [categories, setCategories] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [open, setOpen] =useState(false);
+  const [ropen, setROpen] =useState(false);
+  const [more, setMore] =useState(false);
+  const [categories, setCategories] =useState(false);
+  const [anchorEl, setAnchorEl] =useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =useState(null);
+  const [mouseOver,setMouseOver]=useState(false)
   const isMenuOpen = Boolean(anchorEl);
 
   // for toggling the side bar onClick
@@ -325,6 +326,11 @@ const SideiDrawer=()=> {
   const handleDrawerClose = () =>setOpen(false)
   // handling droparrow
   const handleProfileMenuOpen = (event) =>setAnchorEl(event.currentTarget)
+  // for pagination op up
+  // const openPopUpOnMover=(event)=>{
+  //   setAnchorEl(event.currentTarget)
+  //   setMouseOver(true)
+  // }
 // for closing the droparrow options
   const handleMobileMenuClose = () =>setMobileMoreAnchorEl(null);
   // for onclick close
@@ -350,10 +356,21 @@ const SideiDrawer=()=> {
       <MenuItem className={classes.menuItemFromInbix} onClick={handleMenuClose}>UnRead</MenuItem>
       <MenuItem className={classes.menuItemFromInbix} onClick={handleMenuClose}>Starred</MenuItem>
       <MenuItem className={classes.menuItemFromInbix} onClick={handleMenuClose}>UnStarred</MenuItem>
-
-
     </Menu>
   );
+  // const paginationPopUp = 'primary-search-account-menu';
+  // const renderPaginationPopUp = (
+  //   <Menu
+  //     anchorEl={anchorEl}
+  //     style={{top:"35px",left:'70px'}}
+  //     transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+  //     open={isMenuOpen}
+  //     onClose={handleMenuClose}
+  //   >
+  //     <MenuItem className={classes.menuItemFromInbix}  onClick={handleMenuClose}>Newest</MenuItem>
+  //     <MenuItem className={classes.menuItemFromInbix} onClick={handleMenuClose}>Oldest</MenuItem>
+  //   </Menu>
+  // );
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -675,10 +692,12 @@ const SideiDrawer=()=> {
               name="checkedB"
               color="disabled"
               />
-              <ArrowDropDownIcon  id="dropArrowCheck" onClick={(event)=>handleProfileMenuOpen(event)} />
+              <ArrowDropDownIcon   id="dropArrowCheck" onClick={(event)=>handleProfileMenuOpen(event)} />
               </>
               </Tooltip>
+              {/* {mouseOver ? renderPaginationPopUp :renderMenu} */}
               {renderMenu}
+              {/* {renderPaginationPopUp} */}
                 <Tooltip title="Refresh" placement="bottom">
                 <IconButton >
                 <RefreshIcon fontSize="small"  style={{cursor:'pointer',position:'relative'}} />  
@@ -689,7 +708,7 @@ const SideiDrawer=()=> {
                 <MoreVertIcon  fontSize="small"/>
                 </IconButton >
                 </Tooltip>
-                <span className={classes.paginationSpan} style={{padding:'4px',display:'block',cursor:'pointer',position:'relative',left:open ? '810px':ropen ? '940px':'980px'}}  >1 of 1 </span>
+                <span  className={classes.paginationSpan} style={{padding:'4px',display:'block',cursor:'pointer',position:'relative',left:open ? '810px':ropen ? '940px':'980px'}}  >1 of 1 </span>
                 <Tooltip dense  title="Older" placement="bottom">
                 <ChevronRightIcon style={{position:'relative',left:open ? '891px' :ropen ? '1003px':'1050px'}} fontSize="small"/>
                 </Tooltip>
@@ -706,7 +725,7 @@ const SideiDrawer=()=> {
               />
               </Tooltip>
               <Tooltip title="Unstarred" placement="bottom">
-              <StarBorderOutlinedIcon  />
+              <StarBorderOutlinedIcon color="disabled" />
               </Tooltip>
               <span style={{position:'relative',left:'5px',fontSize:'.875rem',top:'2px',letterSpacing:'.2px'}} >GitHub</span>
               <span style={{position:'relative',left:'147px',width:'800px',fontSize:'.875rem',top:'2px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'"..."'}} >[GitHub] Please Verify Your Email Address</span>
@@ -727,7 +746,7 @@ const SideiDrawer=()=> {
               />
               </Tooltip>
               <Tooltip title="Unstarred" placement="bottom">
-              <StarBorderOutlinedIcon  />
+              <StarBorderOutlinedIcon color="disabled"  />
               </Tooltip>
               <span style={{position:'relative',left:'5px',fontSize:'.875rem',top:'2px',letterSpacing:'.2px'}} >GitHub</span>
               <span style={{position:'relative',left:'147px',width:'800px',fontSize:'.875rem',top:'2px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'"..."'}} >[GitHub] Please Verify Your Email Address</span>
@@ -748,7 +767,7 @@ const SideiDrawer=()=> {
               />
               </Tooltip>
               <Tooltip title="Unstarred" placement="bottom">
-              <StarBorderOutlinedIcon  />
+              <StarBorderOutlinedIcon color="disabled" />
               </Tooltip>
               <span style={{position:'relative',left:'5px',fontSize:'.875rem',top:'2px',letterSpacing:'.2px'}} >GitHub</span>
               <span style={{position:'relative',left:'147px',width:'800px',fontSize:'.875rem',top:'2px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'"..."'}} >[GitHub] Please Verify Your Email Address</span>
