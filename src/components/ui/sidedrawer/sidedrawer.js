@@ -295,8 +295,6 @@ const SideiDrawer=()=> {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
 
-
-  
   // for toggling the side bar onClick
   const handleDrawerOpen = () => {
     let prevOpen=open
@@ -318,21 +316,13 @@ const SideiDrawer=()=> {
     setCategories(true)
   }
   // on mouse hover show the side drawer
-  const mouseOverDrawerOpen=()=>{
-    setOpen(true)
-  }
+  const mouseOverDrawerOpen=()=>setOpen(true)
   // on mouse out close the side drawer
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  const handleDrawerClose = () =>setOpen(false)
   // handling droparrow
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const handleProfileMenuOpen = (event) =>setAnchorEl(event.currentTarget)
 // for closing the droparrow options
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
+  const handleMobileMenuClose = () =>setMobileMoreAnchorEl(null);
   // for onclick close
   const handleMenuClose = () => {
     setAnchorEl(null);
