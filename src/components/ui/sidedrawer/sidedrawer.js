@@ -253,6 +253,10 @@ const useStyles = makeStyles((theme) => ({
     },
     nested: {
       paddingLeft: theme.spacing(4),
+    },
+    menuItemFromInbix:{
+      paddingRight:'69px',
+      paddingLeft:'69px'
     }
 }));
 const SideiDrawer=()=> {
@@ -265,6 +269,10 @@ const SideiDrawer=()=> {
   const [ropen, setROpen] = React.useState(false);
   const [more, setMore] = React.useState(false);
   const [categories, setCategories] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const isMenuOpen = Boolean(anchorEl);
+
 
   
   // for toggling the side bar onClick
@@ -295,6 +303,44 @@ const SideiDrawer=()=> {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  // handling droparrow
+  const handleProfileMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+// for closing the droparrow options
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null);
+  };
+  // for onclick close
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+  };
+
+  
+
+  const menuId = 'primary-search-account-menu';
+  const renderMenu = (
+    <Menu
+      anchorEl={anchorEl}
+      style={{top:"35px",left:'70px'}}
+      id={menuId}
+      id="menuItemList"
+      keepMounted
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+      <MenuItem className={classes.menuItemFromInbix}  onClick={handleMenuClose}>All</MenuItem>
+      <MenuItem className={classes.menuItemFromInbix} onClick={handleMenuClose}>None</MenuItem>
+      <MenuItem className={classes.menuItemFromInbix} onClick={handleMenuClose}>Read</MenuItem>
+      <MenuItem className={classes.menuItemFromInbix} onClick={handleMenuClose}>UnRead</MenuItem>
+      <MenuItem className={classes.menuItemFromInbix} onClick={handleMenuClose}>Starred</MenuItem>
+      <MenuItem className={classes.menuItemFromInbix} onClick={handleMenuClose}>UnStarred</MenuItem>
+
+
+    </Menu>
+  );
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -603,14 +649,19 @@ const SideiDrawer=()=> {
         </List>
         <Divider />
       </Drawer>
-      <main style={{overflow:'hidden'}} className={classes.content}>
+      <main style={{overflow:'hidden'}} >
         <div className={classes.toolbar} />
-        <div>
-        <Checkbox
-            name="checkedB"
-            color="primary"
-          />
-           <Select
+        <div  style={{backgroundColor:'white'}}  >
+            <div height="20px" width="20px" style={{backgroundColor:'#f2f2f2'}} >
+              <Checkbox
+              name="checkedB"
+              color="primary"
+              />
+              <ArrowDropDownIcon id="dropArrowCheck" onClick={(event)=>handleProfileMenuOpen(event)} />
+              {renderMenu}
+            </div>
+
+           {/* <Select
           labelId="demo-customized-select-label"
           id="demo-customized-select"
         >
@@ -618,7 +669,7 @@ const SideiDrawer=()=> {
           <MenuItem value={20}>None</MenuItem>
           <MenuItem value={30}>Read</MenuItem>
         </Select>
-        <RefreshIcon style={{ fontSize: 20  }} />
+        <RefreshIcon style={{ fontSize: 20  }} /> */}
         </div>
         {/* <Box display="flex">
         <Box p={1} bgcolor="grey.300">
@@ -681,12 +732,12 @@ const SideiDrawer=()=> {
         <Divider style={{marginTop:"26px"}} />
         <Tooltip title="Get Adds-ons" placement="left">
         <ListItem>
-          <AddIcon className={classes.inconSizeDecrease} style={{marginTop:"25px"}}/>
+          <AddIcon className={classes.inconSizeDecrease} style={{marginTop:"25px",position:'relative',right:'9px'}}/>
         </ListItem>
         </Tooltip>
         <ListItem onClick={()=>rightHandleDrawerOpen()} style={{cusrsor:"pointer"}} >
         <Tooltip title="Hide Side Panel" placement="left">
-        <ChevronRightIcon style={{marginTop:"215px",cursor:'pointer'}}/>
+        <ChevronRightIcon style={{marginTop:"215px",cursor:'pointer',position:'relative',right:'12px'}}/>
         </Tooltip>
 
         </ListItem>

@@ -97,3 +97,9 @@ width: 40px
 .MuiList-padding{
     padding-top: 0px !important;
 }
+#dropArrowCheck{
+   position: relative !important;
+   top: 7px !important;
+   right: 9px !important;
+
+}
