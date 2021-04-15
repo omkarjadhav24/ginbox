@@ -64,7 +64,7 @@ import RefreshIcon from '@material-ui/icons/Refresh';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
-
+import Inbox from '../../Inbox/inbox'
 // connstant sidedrawer width
 const drawerWidth = 240;
 // for right side drawer
@@ -684,103 +684,7 @@ const SideiDrawer=()=> {
         })}  >
         <div className={classes.toolbar} />
         <div  style={{backgroundColor:'white', width:open ? '1124px':ropen ? '1236px':'12890px',overflow:'hidden'}}  >
-            <List style={{width:'100%'}} >
-              <ListItem id="inboxFirstRow" >
-              <Tooltip title="Select" placement="bottom">
-              <>
-              <Checkbox 
-              name="checkedB"
-              color="disabled"
-              />
-              <ArrowDropDownIcon   id="dropArrowCheck" onClick={(event)=>handleProfileMenuOpen(event)} />
-              </>
-              </Tooltip>
-              {/* {mouseOver ? renderPaginationPopUp :renderMenu} */}
-              {renderMenu}
-              {/* {renderPaginationPopUp} */}
-                <Tooltip title="Refresh" placement="bottom">
-                <IconButton >
-                <RefreshIcon fontSize="small"  style={{cursor:'pointer',position:'relative'}} />  
-                </IconButton>
-                </Tooltip>
-                <Tooltip  title="More" placement="bottom">
-                <IconButton  >
-                <MoreVertIcon  fontSize="small"/>
-                </IconButton >
-                </Tooltip>
-                <span  className={classes.paginationSpan} style={{padding:'4px',display:'block',cursor:'pointer',position:'relative',left:open ? '810px':ropen ? '940px':'980px'}}  >1 of 1 </span>
-                <Tooltip dense  title="Older" placement="bottom">
-                <ChevronRightIcon style={{position:'relative',left:open ? '891px' :ropen ? '1003px':'1050px'}} fontSize="small"/>
-                </Tooltip>
-                <Tooltip dense  title="Newer" placement="bottom">
-                <ChevronLeftIcon style={{position:'relative',left:open ? '820px' :ropen ? '950px':'985px'}} fontSize="small"/>
-                </Tooltip>
-              </ListItem>
-              <ListItem className={classes.inboxListHover}  id="inboxList" style={{backgroundColor:'#f5f7f7'}}>
-                <>
-              <Tooltip title="Select" placement="bottom">
-              <Checkbox 
-              name="checkedB"
-              color="disabled"
-              />
-              </Tooltip>
-              <Tooltip title="Unstarred" placement="bottom">
-              <StarBorderOutlinedIcon color="disabled" />
-              </Tooltip>
-              <span style={{position:'relative',left:'5px',fontSize:'.875rem',top:'2px',letterSpacing:'.2px'}} >GitHub</span>
-              <span style={{position:'relative',left:'147px',width:'800px',fontSize:'.875rem',top:'2px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'"..."'}} >[GitHub] Please Verify Your Email Address</span>
-              <div  style={{position:'relative',left:open ? '145px':ropen ?   '258px':'315px',fontSize:'.875rem',top:'2px'}} >
-                <span>
-                  14 Apr
-                </span>
-              </div>
-              </>
-              </ListItem>
-              <Divider/>
-              <ListItem className={classes.inboxListHover} style={{backgroundColor:'#f5f7f7'}}>
-                <>
-              <Tooltip title="Select" placement="bottom">
-              <Checkbox 
-              name="checkedB"
-              color="disabled"
-              />
-              </Tooltip>
-              <Tooltip title="Unstarred" placement="bottom">
-              <StarBorderOutlinedIcon color="disabled"  />
-              </Tooltip>
-              <span style={{position:'relative',left:'5px',fontSize:'.875rem',top:'2px',letterSpacing:'.2px'}} >GitHub</span>
-              <span style={{position:'relative',left:'147px',width:'800px',fontSize:'.875rem',top:'2px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'"..."'}} >[GitHub] Please Verify Your Email Address</span>
-              <div  style={{position:'relative',left:open ? '145px':ropen ?   '258px':'315px',fontSize:'.875rem',top:'2px'}} >
-                <span>
-                  14 Apr
-                </span>
-              </div>
-              </>
-              </ListItem>
-              <Divider/>
-               <ListItem className={classes.inboxListHover} style={{backgroundColor:'#f5f7f7'}}>
-                <>
-              <Tooltip title="Select" placement="bottom">
-              <Checkbox 
-              name="checkedB"
-              color="disabled"
-              />
-              </Tooltip>
-              <Tooltip title="Unstarred" placement="bottom">
-              <StarBorderOutlinedIcon color="disabled" />
-              </Tooltip>
-              <span style={{position:'relative',left:'5px',fontSize:'.875rem',top:'2px',letterSpacing:'.2px'}} >GitHub</span>
-              <span style={{position:'relative',left:'147px',width:'800px',fontSize:'.875rem',top:'2px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'"..."'}} >[GitHub] Please Verify Your Email Address</span>
-              <div  style={{position:'relative',left:open ? '145px':ropen ?   '258px':'315px',fontSize:'.875rem',top:'2px'}} >
-                <span>
-                  14 Apr
-                </span>
-              </div>
-              </>
-              <Divider/>
-              </ListItem>
-            </List>
-             
+          <Inbox open={open} ropen={ropen} />
         </div>
        
         <div  id="shoeRightBar" onClick={()=>rightHandleDrawerOpen()}  style={{width:'50px',position:'absolute',bottom:'0px',right:'-24px'}}>
