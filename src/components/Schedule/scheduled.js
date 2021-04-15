@@ -165,7 +165,7 @@ const renderMenu = (
               </ListItem>
               <ListItem   id="inboxList" style={{height:'45px',borderRadius:'5px 5px 5px 5px',backgroundColor:'#f5f7f7'}}>
                 <>
-              <div style={{position:'relative',left:'6px'}} >
+              <div style={{position:'relative',left:'6px',top:'2px'}} >
                   <img src="https://www.gstatic.com/images/icons/material/system/1x/schedule_send_black_20dp.png" alt="Schedule"/>
               </div>
               <span color="disabled" style={{position:'relative',left:'20px',fontSize:'.875rem',top:'2px',letterSpacing:'.2px'}} >Messages in Scheduled will be sent at their scheduled time.</span>
