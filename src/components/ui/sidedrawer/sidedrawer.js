@@ -266,24 +266,7 @@ const useStyles = makeStyles((theme) => ({
         duration: theme.transitions.duration.enteringScreen,
       }),
       marginLeft: 0,
-    },
-    inboxListHover:{
-      '&:hover': {
-        borderBottom:'2px solid #bbc1bb5e',
-        borderRight:'0.4px solid #bbc1bb5e',
-        borderLeft:'0.2px solid #bbc1bb5e',
-        borderTop:'0.6px solid #bbc1bb5e',
-        cursor:'pointer'
-     }
-    },
-    paginationSpan:{
-      '&:hover': {
-      backgroundColor:'#f5f7f7',
-      border:'1px solid #f5f7f7',
-      borderRadius:"2px"
-     }
-    },
-
+    }
 }));
 const SideiDrawer=()=> {
     // consume all styles
@@ -296,10 +279,6 @@ const SideiDrawer=()=> {
   const [more, setMore] =useState(false);
   const [categories, setCategories] =useState(false);
   const [anchorEl, setAnchorEl] =useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =useState(null);
-  const [mouseOver,setMouseOver]=useState(false)
-  const isMenuOpen = Boolean(anchorEl);
-
   // for toggling the side bar onClick
   const handleDrawerOpen = () => {
     let prevOpen=open
@@ -324,53 +303,6 @@ const SideiDrawer=()=> {
   const mouseOverDrawerOpen=()=>setOpen(true)
   // on mouse out close the side drawer
   const handleDrawerClose = () =>setOpen(false)
-  // handling droparrow
-  const handleProfileMenuOpen = (event) =>setAnchorEl(event.currentTarget)
-  // for pagination op up
-  // const openPopUpOnMover=(event)=>{
-  //   setAnchorEl(event.currentTarget)
-  //   setMouseOver(true)
-  // }
-// for closing the droparrow options
-  const handleMobileMenuClose = () =>setMobileMoreAnchorEl(null);
-  // for onclick close
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-  const menuId = 'primary-search-account-menu';
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      style={{top:"35px",left:'70px'}}
-      id={menuId}
-      id="menuItemList"
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem className={classes.menuItemFromInbix}  onClick={handleMenuClose}>All</MenuItem>
-      <MenuItem className={classes.menuItemFromInbix} onClick={handleMenuClose}>None</MenuItem>
-      <MenuItem className={classes.menuItemFromInbix} onClick={handleMenuClose}>Read</MenuItem>
-      <MenuItem className={classes.menuItemFromInbix} onClick={handleMenuClose}>UnRead</MenuItem>
-      <MenuItem className={classes.menuItemFromInbix} onClick={handleMenuClose}>Starred</MenuItem>
-      <MenuItem className={classes.menuItemFromInbix} onClick={handleMenuClose}>UnStarred</MenuItem>
-    </Menu>
-  );
-  // const paginationPopUp = 'primary-search-account-menu';
-  // const renderPaginationPopUp = (
-  //   <Menu
-  //     anchorEl={anchorEl}
-  //     style={{top:"35px",left:'70px'}}
-  //     transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-  //     open={isMenuOpen}
-  //     onClose={handleMenuClose}
-  //   >
-  //     <MenuItem className={classes.menuItemFromInbix}  onClick={handleMenuClose}>Newest</MenuItem>
-  //     <MenuItem className={classes.menuItemFromInbix} onClick={handleMenuClose}>Oldest</MenuItem>
-  //   </Menu>
-  // );
   return (
     <div className={classes.root}>
       <CssBaseline />
