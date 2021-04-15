@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './navbar.css'
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,6 +18,7 @@ import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import Tooltip from '@material-ui/core/Tooltip';
+import ClearIcon from '@material-ui/icons/Clear';
 // connstant sidedrawer width
 const drawerWidth = 240;
 // for right side drawer
@@ -121,8 +122,13 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+  searchClearIcon:{
+      marginLeft:'400px',
+      position:'fixed'
+  },
   arrowDropDownIcon:{
-      marginLeft:'440px'
+    marginLeft:'440px',
+    position:'fixed'
   },
   removingBoxShadow:{
       boxShadow:'0px 0px 0.7px 0px'
@@ -132,6 +138,8 @@ const useStyles = makeStyles((theme) => ({
 const NavBar=(props)=> {
     // consume all styles
   const classes = useStyles();
+  // states
+  const[clearSearch,setClearSearch]=useState(false)
   return (
     <AppBar
       style={{color:'black',backgroundColor:'white'}}
@@ -161,15 +169,23 @@ const NavBar=(props)=> {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
-              value={props.sMessage}
+              value={ clearSearch ? null: props.sMessage}
               inputProps={
                 { 'aria-label': 'search' }}
             />
-            <IconButton className={classes.arrowDropDownIcon}>
-          <Tooltip title="Show search options" placement="bottom">
-              <ArrowDropDownIcon  />
-          </Tooltip>
-              </IconButton>
+            {props.sMessage ?
+             <IconButton onClick={()=>setClearSearch(true)} className={classes.searchClearIcon} >
+          <Tooltip  title="Clear Search" placement="bottom">
+             <ClearIcon/>
+            </Tooltip>
+           </IconButton>
+           : null  
+          }
+            <IconButton className={classes.arrowDropDownIcon} >
+            <Tooltip title="Show search options" placement="bottom">
+            <ArrowDropDownIcon  />
+            </Tooltip>
+            </IconButton>
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
