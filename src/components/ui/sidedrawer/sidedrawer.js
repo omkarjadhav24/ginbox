@@ -47,6 +47,7 @@ import NavBar from '../navbar/navbar'
 import Snoozed from '../../Snoozed/snoozed'
 import Sent from '../../Sent/sent'
 import Draft from '../../Draft/draft'
+import Important from '../../Important/important'
 import {NavLink,Route, Switch} from 'react-router-dom'
 // connstant sidedrawer width
 const drawerWidth = 240;
@@ -280,15 +281,13 @@ const SideiDrawer=()=> {
         </NavLink>
             {more ?
             <>
-        <NavLink to="/less">
         <Tooltip title="Less" placement="right-start">
               <ListItem button onClick={()=>showMoreList()} className={classes.onHoverColor} >
               <ListItemIcon><ExpandLessRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Less" />
             </ListItem>
         </Tooltip>
-        </NavLink>
-        <NavLink to="/important">
+        <NavLink to="/imp">
         <Tooltip title="Important" placement="right-start">
         <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><LabelImportantRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
@@ -410,14 +409,12 @@ const SideiDrawer=()=> {
             </> 
             :
             <>
-        <NavLink to="/more">
             <Tooltip title="More" placement="right-start">
              <ListItem button onClick={()=>showMoreList()} className={classes.onHoverColor} >
               <ListItemIcon><ExpandMoreRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="More" />
             </ListItem>
             </Tooltip>
-        </NavLink>
             </>}
         </List>
         <Divider />
@@ -486,7 +483,7 @@ const SideiDrawer=()=> {
                 <Route path="/snoozed" component={Snoozed} exact />
                 <Route path="/sent" component={Sent} exact />
                 <Route path="/draft" component={Draft} exact />
-
+                <Route path="/imp" component={Important} exact />
           </Switch>
         </div>
         <div  id="shoeRightBar" onClick={()=>rightHandleDrawerOpen()}  style={{width:'50px',position:'absolute',bottom:'0px',right:'-24px'}}>
