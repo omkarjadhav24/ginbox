@@ -113,10 +113,6 @@ width: 40px
 #inboxList{
     padding-bottom: 5px;
 }
-/* .MuiListItem-root:hover{
-    border-bottom: 2px solid #bbc1bb5e;
-    border-top: 0.6px solid #bbc1bb5e;
-    border-left: 0.2px solid #bbc1bb5e;
-    border-right: 0.4px solid #bbc1bb5e;
-
-} */
+a{
+    text-decoration: none;
+}
