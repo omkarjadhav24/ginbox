@@ -48,6 +48,7 @@ import Snoozed from '../../Snoozed/snoozed'
 import Sent from '../../Sent/sent'
 import Draft from '../../Draft/draft'
 import Important from '../../Important/important'
+import Schedule from '../../Schedule/scheduled'
 import {NavLink,Route, Switch} from 'react-router-dom'
 // connstant sidedrawer width
 const drawerWidth = 240;
@@ -486,6 +487,7 @@ const SideiDrawer=()=> {
                 <Route path="/sent" component={Sent} exact />
                 <Route path="/draft" component={Draft} exact />
                 <Route path="/imp" component={Important} exact />
+                <Route path="/schedule" component={Schedule} exact />
           </Switch>
         </div>
         <div  id="shoeRightBar" onClick={()=>rightHandleDrawerOpen()}  style={{width:'50px',position:'absolute',bottom:'0px',right:'-24px'}}>
