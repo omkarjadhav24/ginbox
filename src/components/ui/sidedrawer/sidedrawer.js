@@ -41,7 +41,9 @@ import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import Tooltip from '@material-ui/core/Tooltip';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Inbox from '../../Inbox/inbox'
+import Starred from '../../Starred/starred'
 import NavBar from '../navbar/navbar'
+import Snoozed from '../../Snoozed/snoozed'
 import {NavLink,Route, Switch} from 'react-router-dom'
 // connstant sidedrawer width
 const drawerWidth = 240;
@@ -461,14 +463,16 @@ const SideiDrawer=()=> {
         </List>
         <Divider/>
       </Drawer>
-      <main height="100%"  className={clsx({
+      <main  style={{height:'700px'}}  className={clsx({
           [classes.contentShift]: ropen,
         })}  >
         <div className={classes.toolbar} />
-        <div style={{backgroundColor:'white', width:open ? '1124px':ropen ? '1236px':'12890px',overflow:'hidden'}}  >
+        <div style={{height:'700px',backgroundColor:'white', width:open ? '1124px':ropen ? '1236px':'12890px',overflow:'hidden'}}  >
           <Switch>
                 <Route path="/" component={Inbox} exact />
                 <Route path="/inbox" component={Inbox} exact />
+                <Route path="/starred" component={Starred} exact />
+                <Route path="/snoozed" component={Snoozed} exact />
           </Switch>
         </div>
         <div  id="shoeRightBar" onClick={()=>rightHandleDrawerOpen()}  style={{width:'50px',position:'absolute',bottom:'0px',right:'-24px'}}>
