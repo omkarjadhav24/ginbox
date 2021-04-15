@@ -42,6 +42,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Inbox from '../../Inbox/inbox'
 import NavBar from '../navbar/navbar'
+import {NavLink,Route, Switch} from 'react-router-dom'
 // connstant sidedrawer width
 const drawerWidth = 240;
 // for right side drawer
@@ -230,14 +231,16 @@ const SideiDrawer=()=> {
             
         {/* <Divider /> */}
         <List  className={classes.heightOfUl} dense={true}>
+        <NavLink to="/inbox">
         <Tooltip title="Inbox" placement="right-start">
             <ListItem button className={!open ?null:classes.coluringToTheInbox} >
-              <ListItemIcon><div className={open ? null :classes.divBackgroundColor} >
+             <ListItemIcon><div className={open ? null :classes.divBackgroundColor} >
               <InboxIcon className={classes.inconSizeDecrease} className={classes.inboxIconRedColor}/>
               </div></ListItemIcon>
               <ListItemText id="boldText" primary="Inbox" />
             </ListItem>
         </Tooltip>
+        </NavLink>
         <Tooltip title="Starred" placement="right-start">
             <ListItem button className={classes.onHoverColor}>
               <ListItemIcon><GradeRoundedIcon className={classes.inconSizeDecrease} /></ListItemIcon>
@@ -414,16 +417,18 @@ const SideiDrawer=()=> {
            </> :null}
           </ListItem>
         </List>
-        <Divider />
+        <Divider/>
       </Drawer>
       <main height="100%"  className={clsx({
           [classes.contentShift]: ropen,
         })}  >
         <div className={classes.toolbar} />
-        <div  style={{backgroundColor:'white', width:open ? '1124px':ropen ? '1236px':'12890px',overflow:'hidden'}}  >
-          <Inbox open={open} ropen={ropen} />
+        <div style={{backgroundColor:'white', width:open ? '1124px':ropen ? '1236px':'12890px',overflow:'hidden'}}  >
+          <Switch>
+                <Route path="/" component={Inbox} exact />
+                <Route path="/inbox" component={Inbox} exact />
+          </Switch>
         </div>
-       
         <div  id="shoeRightBar" onClick={()=>rightHandleDrawerOpen()}  style={{width:'50px',position:'absolute',bottom:'0px',right:'-24px'}}>
         <ArrowBackIosIcon style={{marginLeft:'9px',fontSize:"15px"}}/>
         </div>
