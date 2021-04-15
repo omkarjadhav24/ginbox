@@ -241,77 +241,100 @@ const SideiDrawer=()=> {
             </ListItem>
         </Tooltip>
         </NavLink>
+        <NavLink to="/starred">
         <Tooltip title="Starred" placement="right-start">
             <ListItem button className={classes.onHoverColor}>
               <ListItemIcon><GradeRoundedIcon className={classes.inconSizeDecrease} /></ListItemIcon>
               <ListItemText primary="Starred" />
             </ListItem> 
         </Tooltip>
+        </NavLink>
+        <NavLink to="/snoozed">
         <Tooltip title="Snoozed" placement="right-start">
             <ListItem button className={classes.onHoverColor}>
               <ListItemIcon><WatchLaterRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Snoozed" />
             </ListItem> 
         </Tooltip>
+        </NavLink>
+        <NavLink to="/sent">
         <Tooltip title="Sent" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><SendIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Sent" />
             </ListItem>
         </Tooltip>
+        </NavLink>
             {more ?
             <>
+        <NavLink to="/less">
         <Tooltip title="Less" placement="right-start">
               <ListItem button onClick={()=>showMoreList()} className={classes.onHoverColor} >
               <ListItemIcon><ExpandLessRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Less" />
             </ListItem>
         </Tooltip>
+        </NavLink>
+        <NavLink to="/important">
         <Tooltip title="Important" placement="right-start">
         <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><LabelImportantRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Important" />
             </ListItem>
         </Tooltip>
+        </NavLink>
+        <NavLink to="/chats">
         <Tooltip title="Chats" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><WhatsAppIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Chats" />
             </ListItem>
         </Tooltip>
+        </NavLink>
+        <NavLink to="/schedule">
         <Tooltip title="Schedule" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><HourglassFullIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Schedule" />
             </ListItem>
         </Tooltip>
+        </NavLink>
+        <NavLink to="/allmail">
         <Tooltip title="All Mail" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><MailIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="All Mail" />
             </ListItem>
         </Tooltip>
+        </NavLink>
+        <NavLink to="/spam">
         <Tooltip title="Spam" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><ReportIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Spam" />
             </ListItem>
         </Tooltip>
+        </NavLink>
+        <NavLink to="/trash">
         <Tooltip title="Trash" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><DeleteIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Trash" />
             </ListItem>
         </Tooltip>
+        </NavLink>
+        <NavLink to="/categories">
         <Tooltip title="Categories" placement="right-start">
             <ListItem button  onClick={()=>categoriesHandler()} className={classes.onHoverColor} >
               <ListItemIcon><LabelIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Categories" />
             </ListItem>
         </Tooltip>
+        </NavLink>
             {categories ? 
             <Collapse in={open} timeout="auto" unmountOnExit>
             <List dense={true} component="div" disablePadding>
+        <NavLink to="/social">
             <Tooltip title="Social" placement="right-start">
               <ListItem button className={classes.nested}>
                 <ListItemIcon>
@@ -320,6 +343,8 @@ const SideiDrawer=()=> {
                 <ListItemText primary="Social" />
               </ListItem>
             </Tooltip>
+          </NavLink>
+        <NavLink to="/updates">
             <Tooltip title="Updates" placement="right-start">
               <ListItem button className={classes.nested}>
                 <ListItemIcon>
@@ -328,6 +353,8 @@ const SideiDrawer=()=> {
                 <ListItemText primary="Updates" />
               </ListItem>
             </Tooltip>
+        </NavLink>
+        <NavLink to="/forums">
             <Tooltip title="Forums" placement="right-start">
               <ListItem button className={classes.nested}>
                 <ListItemIcon>
@@ -336,6 +363,8 @@ const SideiDrawer=()=> {
                 <ListItemText primary="Forums" />
               </ListItem>
             </Tooltip>
+        </NavLink>
+        <NavLink to="/promotions">
             <Tooltip title="Promotions" placement="right-start">
               <ListItem button className={classes.nested}>
                 <ListItemIcon>
@@ -344,31 +373,38 @@ const SideiDrawer=()=> {
                 <ListItemText primary="Promotions" />
               </ListItem>
             </Tooltip>
+        </NavLink>
             </List>
           </Collapse>  
           : null
           }
+        <NavLink to="/managelabels">
             <Tooltip title="Manage Labels" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><SettingsIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Manage Labels" />
             </ListItem>
             </Tooltip>
+          </NavLink>
+        <NavLink to="/createlabels">
             <Tooltip title="Create Labels" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><AddIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Create Labels" />
             </ListItem>
             </Tooltip>
+        </NavLink>
             </> 
             :
             <>
+        <NavLink to="/more">
             <Tooltip title="More" placement="right-start">
              <ListItem button onClick={()=>showMoreList()} className={classes.onHoverColor} >
               <ListItemIcon><ExpandMoreRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="More" />
             </ListItem>
             </Tooltip>
+        </NavLink>
             </>}
         </List>
         <Divider />
@@ -379,6 +415,7 @@ const SideiDrawer=()=> {
             //   </ListSubheader>
             // }
         >
+        <NavLink to="/meet">
           <Tooltip title="Meet" placement="right-start">
           {open ?  <p id="pMarginLeftMeet" >Meet</p> :
 
@@ -387,18 +424,23 @@ const SideiDrawer=()=> {
           </ListItem>
           }
           </Tooltip>
+        </NavLink>
+        <NavLink to="/newmeetings">
           <Tooltip title="New meetings" placement="right-start">
           <ListItem  style={{cursor:'pointer'}} >
           <ListItemIcon><VideocamIcon className={classes.inconSizeDecrease}/></ListItemIcon>
           <ListItemText primary="New meetings" />
           </ListItem>
           </Tooltip>
+        </NavLink>
+        <NavLink to="/mymeetings">
           <Tooltip title="My meetings" placement="right-start">
           <ListItem style={{cursor:'pointer'}}  >
           <ListItemIcon><EventIcon className={classes.inconSizeDecrease}/></ListItemIcon>
           <ListItemText primary="My meetings" />
           </ListItem>
           </Tooltip>
+        </NavLink>
         </List>
         <Divider />
         <List>
