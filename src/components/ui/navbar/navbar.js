@@ -161,6 +161,7 @@ const NavBar=(props)=> {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
+              value={props.sMessage}
               inputProps={
                 { 'aria-label': 'search' }}
             />

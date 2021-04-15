@@ -150,7 +150,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius:"0px 12px 12px 0px"
     },
     heightOfUl:{
-        height:'170px'
+        height:'200px'
     },
     nested: {
       paddingLeft: theme.spacing(4),
@@ -174,6 +174,8 @@ const SideiDrawer=()=> {
   const [more, setMore] =useState(false);
   const [categories, setCategories] =useState(false);
   const [anchorEl, setAnchorEl] =useState(null);
+  const [searchMessage, SetSearchMessage] =useState(null);
+
   // for toggling the side bar onClick
   const handleDrawerOpen = () => {
     let prevOpen=open
@@ -201,7 +203,7 @@ const SideiDrawer=()=> {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <NavBar open={open} ropen={ropen} navbar={()=>handleDrawerOpen()} />
+      <NavBar sMessage={searchMessage} open={open} ropen={ropen} navbar={()=>handleDrawerOpen()} />
       <Drawer
         variant="permanent"
         onMouseOver={()=>mouseOverDrawerOpen()}
@@ -247,7 +249,7 @@ const SideiDrawer=()=> {
             </ListItem>
         </Tooltip>
         </NavLink>
-        <NavLink to="/starred">
+        <NavLink onClick={()=>SetSearchMessage("is:starred")} to="/starred">
         <Tooltip title="Starred" placement="right-start">
             <ListItem button className={classes.onHoverColor}>
               <ListItemIcon><GradeRoundedIcon className={classes.inconSizeDecrease} /></ListItemIcon>
@@ -255,7 +257,7 @@ const SideiDrawer=()=> {
             </ListItem> 
         </Tooltip>
         </NavLink>
-        <NavLink to="/snoozed">
+        <NavLink onClick={()=>SetSearchMessage("in:snoozed")} to="/snoozed">
         <Tooltip title="Snoozed" placement="right-start">
             <ListItem button className={classes.onHoverColor}>
               <ListItemIcon><WatchLaterRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
@@ -263,7 +265,7 @@ const SideiDrawer=()=> {
             </ListItem> 
         </Tooltip>
         </NavLink>
-        <NavLink to="/sent">
+        <NavLink onClick={()=>SetSearchMessage("in:sent")}  to="/sent">
         <Tooltip title="Sent" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><SendIcon className={classes.inconSizeDecrease}/></ListItemIcon>
@@ -271,7 +273,7 @@ const SideiDrawer=()=> {
             </ListItem>
         </Tooltip>
         </NavLink>
-        <NavLink to="/draft">
+        <NavLink onClick={()=>SetSearchMessage("in:draft")} to="/draft">
         <Tooltip title="Draft" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><DescriptionIcon className={classes.inconSizeDecrease}/></ListItemIcon>
@@ -287,7 +289,7 @@ const SideiDrawer=()=> {
               <ListItemText primary="Less" />
             </ListItem>
         </Tooltip>
-        <NavLink to="/imp">
+        <NavLink onClick={()=>SetSearchMessage("is:important")} to="/imp">
         <Tooltip title="Important" placement="right-start">
         <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><LabelImportantRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
@@ -295,7 +297,7 @@ const SideiDrawer=()=> {
             </ListItem>
         </Tooltip>
         </NavLink>
-        <NavLink to="/chats">
+        <NavLink onClick={()=>SetSearchMessage("in:chats")} to="/chats">
         <Tooltip title="Chats" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><WhatsAppIcon className={classes.inconSizeDecrease}/></ListItemIcon>
@@ -303,7 +305,7 @@ const SideiDrawer=()=> {
             </ListItem>
         </Tooltip>
         </NavLink>
-        <NavLink to="/schedule">
+        <NavLink onClick={()=>SetSearchMessage("in:schedule")} to="/schedule">
         <Tooltip title="Schedule" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><HourglassFullIcon className={classes.inconSizeDecrease}/></ListItemIcon>
@@ -319,7 +321,7 @@ const SideiDrawer=()=> {
             </ListItem>
         </Tooltip>
         </NavLink>
-        <NavLink to="/spam">
+        <NavLink onClick={()=>SetSearchMessage("in:spam")} to="/spam">
         <Tooltip title="Spam" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><ReportIcon className={classes.inconSizeDecrease}/></ListItemIcon>
@@ -327,7 +329,7 @@ const SideiDrawer=()=> {
             </ListItem>
         </Tooltip>
         </NavLink>
-        <NavLink to="/trash">
+        <NavLink onClick={()=>SetSearchMessage("in:trash")} to="/trash">
         <Tooltip title="Trash" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><DeleteIcon className={classes.inconSizeDecrease}/></ListItemIcon>
