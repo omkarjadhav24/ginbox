@@ -40,6 +40,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import Tooltip from '@material-ui/core/Tooltip';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import DescriptionIcon from '@material-ui/icons/Description';
 import Inbox from '../../Inbox/inbox'
 import Starred from '../../Starred/starred'
 import NavBar from '../navbar/navbar'
@@ -265,6 +266,14 @@ const SideiDrawer=()=> {
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><SendIcon className={classes.inconSizeDecrease}/></ListItemIcon>
               <ListItemText primary="Sent" />
+            </ListItem>
+        </Tooltip>
+        </NavLink>
+        <NavLink to="/draft">
+        <Tooltip title="Draft" placement="right-start">
+            <ListItem button className={classes.onHoverColor} >
+              <ListItemIcon><DescriptionIcon className={classes.inconSizeDecrease}/></ListItemIcon>
+              <ListItemText primary="Draft" />
             </ListItem>
         </Tooltip>
         </NavLink>
