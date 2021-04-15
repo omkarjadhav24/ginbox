@@ -3,33 +3,18 @@ import './sidedrawer.css'
 import clsx from 'clsx';
 import { makeStyles, useTheme} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
-import MenuIcon from '@material-ui/icons/Menu';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import MoreIcon from '@material-ui/icons/MoreVert';
-import AppsIcon from '@material-ui/icons/Apps';
-import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import GradeRoundedIcon from '@material-ui/icons/GradeRounded';
 import WatchLaterRoundedIcon from '@material-ui/icons/WatchLaterRounded';
 import SendIcon from '@material-ui/icons/Send';
@@ -48,23 +33,15 @@ import VideocamIcon from '@material-ui/icons/Videocam';
 import EventIcon from '@material-ui/icons/Event';
 import VideocamOutlinedIcon from '@material-ui/icons/VideocamOutlined';
 import ForumIcon from '@material-ui/icons/Forum';
-import Icon from '@material-ui/core/Icon';
-import DateRangeIcon from '@material-ui/icons/DateRange';
-import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
-import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import PeopleIcon from '@material-ui/icons/People';
 import Collapse from '@material-ui/core/Collapse';
-import StarBorder from '@material-ui/icons/StarBorder';
 import InfoIcon from '@material-ui/icons/Info';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import Tooltip from '@material-ui/core/Tooltip';
-import Checkbox from '@material-ui/core/Checkbox';
-import RefreshIcon from '@material-ui/icons/Refresh';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
 import Inbox from '../../Inbox/inbox'
+import NavBar from '../navbar/navbar'
 // connstant sidedrawer width
 const drawerWidth = 240;
 // for right side drawer
@@ -74,27 +51,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    // width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
   // menuButton: {
   //   marginRight: 36,
   // },
-  hide: {
-    display: 'none',
-  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -165,69 +124,6 @@ const useStyles = makeStyles((theme) => ({
       display: 'block',
     },
   },
-  search: {
-    position: 'relative',
-    borderRadius: '8px',
-    backgroundColor: '#f1f3f4',
-    '&:hover': {
-      backgroundColor: '#f1f3f4',
-    },
-    '&$focused': {
-        backgroundColor: 'white',
-      },
-    // marginRight: theme.spacing(1),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: '86px',
-      width: '729px',
-      height:'46px'
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    '&$focused': {
-        backgroundColor: 'white',
-      },
-    marginTop:'7px',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
-    },
-  },
-  sectionDesktop: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-    },
-  },
-  sectionMobile: {
-    display: 'flex',
-    [theme.breakpoints.up('md')]: {
-      display: 'none',
-    },
-  },
-  arrowDropDownIcon:{
-      marginLeft:'440px'
-  },
-  removingBoxShadow:{
-      boxShadow:'0px 0px 0.7px 0px'
-  },
   inconSizeDecrease:{
       fontSize:'20px' 
      },
@@ -246,19 +142,11 @@ const useStyles = makeStyles((theme) => ({
         width:'200px',
         borderRadius:"0px 12px 12px 0px"
     },
-    divBackgroundColor:{
-      backgroundColor:'rgba(255, 0, 0, 0.2)',
-      borderRadius:'50%'
-    },
     heightOfUl:{
         height:'170px'
     },
     nested: {
       paddingLeft: theme.spacing(4),
-    },
-    menuItemFromInbix:{
-      paddingRight:'69px',
-      paddingLeft:'69px'
     },
     contentShift: {
       transition: theme.transitions.create('margin', {
@@ -306,90 +194,7 @@ const SideiDrawer=()=> {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
-      style={{color:'black',backgroundColor:'white'}}
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        },classes.removingBoxShadow)}
-      >
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            onClick={()=>handleDrawerOpen()}
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
-          <img class="gb_uc" src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r2.png" srcset="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_2x_r2.png 2x ,https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r2.png 1x" alt="" aria-hidden="true" style={{ width:'109px',height:'40px'}}/>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search mail"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={
-                { 'aria-label': 'search' }}
-            />
-            <IconButton className={classes.arrowDropDownIcon}>
-          <Tooltip title="Show search options" placement="bottom">
-              <ArrowDropDownIcon  />
-          </Tooltip>
-              </IconButton>
-          </div>
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-          <Tooltip title="Support" placement="bottom">
-            <IconButton
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <HelpOutlineIcon/> 
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Settings" placement="bottom">
-            <IconButton
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <SettingsOutlinedIcon/> 
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Google apps" placement="bottom">
-            <IconButton
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <AppsIcon/> 
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Google Account" placement="bottom">
-            <IconButton
-              aria-label="account of current user"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </Tooltip>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <MoreIcon /> 
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
+      <NavBar open={open} ropen={ropen} navbar={()=>handleDrawerOpen()} />
       <Drawer
         variant="permanent"
         onMouseOver={()=>mouseOverDrawerOpen()}
