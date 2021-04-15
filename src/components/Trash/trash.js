@@ -19,7 +19,6 @@ import Divider from '@material-ui/core/Divider';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import { makeStyles, useTheme } from '@material-ui/core';
-// styles
 const useStyles = makeStyles((theme) => ({
     arrowDropDownIcon:{
         marginLeft:'440px'
@@ -80,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
 
   
   }));
-const Scheduled=(props)=>{
+const Trash=(props)=>{
      // consume all styles
   const classes = useStyles();
   // access the currently active theme. You can use it in your own components to have them respond to changes in the theme
@@ -166,11 +165,13 @@ const renderMenu = (
               </ListItem>
               <ListItem   id="inboxList" style={{height:'45px',borderRadius:'5px 5px 5px 5px',backgroundColor:'#f5f7f7'}}>
                 <>
-              <div style={{position:'relative',left:'6px',top:'2px'}} >
-                  <img src="https://www.gstatic.com/images/icons/material/system/1x/schedule_send_black_20dp.png" alt="Schedule"/>
-              </div>
-              <span color="disabled" style={{position:'relative',left:'20px',fontSize:'.875rem',top:'2px',letterSpacing:'.2px'}} >Messages in Scheduled will be sent at their scheduled time.</span>
+              <span color="disabled" style={{position:'relative',left:'300px',fontSize:'.875rem',top:'2px',letterSpacing:'.2px'}} >Messages that have been in Trash more than 30 days will be automatically deleted.</span>
               </>
+              </ListItem>
+              <ListItem>
+              <span color="disabled" style={{position:'relative',left:'490px',fontSize:'.875rem',top:'12px',letterSpacing:'.2px'}} >No conversations in Trash.</span>
+
+                <span></span>
               </ListItem>
             </List>
             <Divider  style={{position:'relative',top:'19px'}}/>
@@ -188,4 +189,4 @@ const renderMenu = (
         </>
     );
 }
-export default Scheduled;
+export default Trash;

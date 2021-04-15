@@ -18,6 +18,7 @@ import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
 import MessageIcon from '@material-ui/icons/Message';
 import Divider from '@material-ui/core/Divider';
 import { makeStyles, useTheme } from '@material-ui/core';
+// styles
 const useStyles = makeStyles((theme) => ({
     arrowDropDownIcon:{
         marginLeft:'440px'

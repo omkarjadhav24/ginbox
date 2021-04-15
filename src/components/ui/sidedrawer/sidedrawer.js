@@ -51,12 +51,13 @@ import Important from '../../Important/important'
 import Schedule from '../../Schedule/scheduled'
 import Chat from '../../Chats/chats'
 import AllMail from '../../AllMail/allmail'
+import Trash from '../../Trash/trash'
 import {NavLink,Route, Switch} from 'react-router-dom'
 // connstant sidedrawer width
 const drawerWidth = 240;
 // for right side drawer
 const rightdrawerWidth=56;
-// styles for navbar and side drawer
+// styles for  and side drawer
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -492,6 +493,7 @@ const SideiDrawer=()=> {
                 <Route path="/schedule" component={Schedule} exact />
                 <Route path="/chats" component={Chat} exact />
                 <Route path="/allmail" component={AllMail} exact />
+                <Route path="/trash" component={Trash} exact />
           </Switch>
         </div>
         <div  id="shoeRightBar" onClick={()=>rightHandleDrawerOpen()}  style={{width:'50px',position:'absolute',bottom:'0px',right:'-24px'}}>
