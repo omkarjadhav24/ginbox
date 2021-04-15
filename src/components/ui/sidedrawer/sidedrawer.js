@@ -44,6 +44,7 @@ import Inbox from '../../Inbox/inbox'
 import Starred from '../../Starred/starred'
 import NavBar from '../navbar/navbar'
 import Snoozed from '../../Snoozed/snoozed'
+import Sent from '../../Sent/sent'
 import {NavLink,Route, Switch} from 'react-router-dom'
 // connstant sidedrawer width
 const drawerWidth = 240;
@@ -473,6 +474,7 @@ const SideiDrawer=()=> {
                 <Route path="/inbox" component={Inbox} exact />
                 <Route path="/starred" component={Starred} exact />
                 <Route path="/snoozed" component={Snoozed} exact />
+                <Route path="/sent" component={Sent} exact />
           </Switch>
         </div>
         <div  id="shoeRightBar" onClick={()=>rightHandleDrawerOpen()}  style={{width:'50px',position:'absolute',bottom:'0px',right:'-24px'}}>
