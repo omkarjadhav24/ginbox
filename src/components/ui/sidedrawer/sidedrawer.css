@@ -1,4 +1,4 @@
-.MuiTypography-displayBlock{
+.MuiTypography-displayBlock:hover{
     font-weight: bold !important;
 }
 .MuiListItem-button{
