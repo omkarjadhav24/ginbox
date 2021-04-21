@@ -159,7 +159,8 @@ const renderMenu = (
               </ListItem>
               </NavLink>
               <Divider/>
-              <ListItem className={classes.inboxListHover} style={{backgroundColor:'#f5f7f7'}}>
+              <NavLink to="/details" >
+              <ListItem className={classes.inboxListHover}  id="inboxList" style={{backgroundColor:'#f5f7f7'}}>
                 <>
               <Tooltip title="Select" placement="bottom">
               <Checkbox 
@@ -168,7 +169,7 @@ const renderMenu = (
               />
               </Tooltip>
               <Tooltip title="Unstarred" placement="bottom">
-              <StarBorderOutlinedIcon color="disabled"  />
+              <StarBorderOutlinedIcon color="disabled" />
               </Tooltip>
               <span style={{position:'relative',left:'5px',fontSize:'.875rem',top:'2px',letterSpacing:'.2px'}} >GitHub</span>
               <span style={{position:'relative',left:'147px',width:'800px',fontSize:'.875rem',top:'2px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'"..."'}} >[GitHub] Please Verify Your Email Address</span>
@@ -179,8 +180,10 @@ const renderMenu = (
               </div>
               </>
               </ListItem>
+              </NavLink>
               <Divider/>
-               <ListItem className={classes.inboxListHover} style={{backgroundColor:'#f5f7f7'}}>
+              <NavLink to="/details" >
+              <ListItem className={classes.inboxListHover}  id="inboxList" style={{backgroundColor:'#f5f7f7'}}>
                 <>
               <Tooltip title="Select" placement="bottom">
               <Checkbox 
@@ -201,6 +204,7 @@ const renderMenu = (
               </>
               <Divider/>
               </ListItem>
+              </NavLink>
             </List>
         </>
     );

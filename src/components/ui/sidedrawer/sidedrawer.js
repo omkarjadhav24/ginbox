@@ -250,7 +250,7 @@ const SideiDrawer=()=> {
             
         {/* <Divider /> */}
         <List  className={classes.heightOfUl} dense={true}>
-        <NavLink onClick={()=>handleDrawerOpenOnSideDrawerMenuClick()} exact={true} activeClassName='is-active' to="/inbox">
+        <NavLink onClick={()=>handleDrawerOpenOnSideDrawerMenuClick()} exact={true} activeClassName={classes.is_active} to="/inbox">
         <Tooltip title="Inbox" placement="right-start">
             <ListItem button className={!open ?null:classes.coluringToTheInbox} >
              <ListItemIcon><div className={open ? null :classes.divBackgroundColor} >
