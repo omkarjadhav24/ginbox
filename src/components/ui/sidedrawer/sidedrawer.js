@@ -174,6 +174,7 @@ const SideiDrawer=()=> {
   const theme = useTheme();
   // states
   const [open, setOpen] =useState(false);
+  const [sideMenuClick,setSideMenuClick]=useState(false)
   const [ropen, setROpen] =useState(false);
   const [more, setMore] =useState(false);
   const [categories, setCategories] =useState(false);
@@ -184,6 +185,11 @@ const SideiDrawer=()=> {
   const handleDrawerOpen = () => {
     let prevOpen=open
     setOpen(!prevOpen);
+  };
+  // onclick side drawer menu drawer remains open
+  const handleDrawerOpenOnSideDrawerMenuClick = () => {
+    setOpen(true);
+    setSideMenuClick(true)
   };
   // for toggling the right side bar onClick
   const rightHandleDrawerOpen = () => {
@@ -210,8 +216,8 @@ const SideiDrawer=()=> {
       <NavBar sMessage={searchMessage} open={open} ropen={ropen} navbar={()=>handleDrawerOpen()} />
       <Drawer
         variant="permanent"
-        onMouseOver={()=>mouseOverDrawerOpen()}
-        onMouseOut={()=>handleDrawerClose()}
+        onMouseOver={()=>{ return sideMenuClick ? null: mouseOverDrawerOpen()}}
+        onMouseOut={()=>{return sideMenuClick ? null : handleDrawerClose()}}
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
           [classes.drawerClose]: !open,
@@ -243,7 +249,7 @@ const SideiDrawer=()=> {
             
         {/* <Divider /> */}
         <List  className={classes.heightOfUl} dense={true}>
-        <NavLink to="/inbox">
+        <NavLink onClick={()=>handleDrawerOpenOnSideDrawerMenuClick()} exact={true} activeClassName='is-active' to="/inbox">
         <Tooltip title="Inbox" placement="right-start">
             <ListItem button className={!open ?null:classes.coluringToTheInbox} >
              <ListItemIcon><div className={open ? null :classes.divBackgroundColor} >
@@ -483,7 +489,7 @@ const SideiDrawer=()=> {
         <div className={classes.toolbar} />
         <div style={{height:'700px',backgroundColor:'white', width:open ? '1124px':ropen ? '1236px':'12890px',overflow:'hidden'}}  >
           <Switch>
-                <Route path="/" component={Inbox} exact />
+                <Route path="/"  render={(props) =><Inbox  open={open} ropen={ropen} {...props} />}   exact />
                 <Route path="/inbox" component={Inbox} exact />
                 <Route path="/starred" component={Starred} exact />
                 <Route path="/snoozed" component={Snoozed} exact />
