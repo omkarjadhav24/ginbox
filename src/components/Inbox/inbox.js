@@ -17,6 +17,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
 import Divider from '@material-ui/core/Divider';
 import { makeStyles, useTheme } from '@material-ui/core';
+import { NavLink } from 'react-router-dom';
 // styles
 const useStyles = makeStyles((theme) => ({
     arrowDropDownIcon:{
@@ -135,6 +136,7 @@ const renderMenu = (
                 <ChevronLeftIcon style={{position:'relative',left:props.open ? '820px' :props.ropen ? '950px':'985px'}} fontSize="small"/>
                 </Tooltip>
               </ListItem>
+              <NavLink to="/details" >
               <ListItem className={classes.inboxListHover}  id="inboxList" style={{backgroundColor:'#f5f7f7'}}>
                 <>
               <Tooltip title="Select" placement="bottom">
@@ -155,6 +157,7 @@ const renderMenu = (
               </div>
               </>
               </ListItem>
+              </NavLink>
               <Divider/>
               <ListItem className={classes.inboxListHover} style={{backgroundColor:'#f5f7f7'}}>
                 <>
