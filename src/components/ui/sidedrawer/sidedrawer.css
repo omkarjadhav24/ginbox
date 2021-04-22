@@ -1,5 +1,10 @@
-.MuiTypography-displayBlock:hover{
+.active .MuiTypography-displayBlock{
     font-weight: bold !important;
+   
+}
+.active .MuiListItem-button{
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.04);
 }
 .MuiListItem-button{
     height: 32px !important;

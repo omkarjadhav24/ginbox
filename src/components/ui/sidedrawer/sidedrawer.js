@@ -141,7 +141,7 @@ const useStyles = makeStyles((theme) => ({
      },
   coluringToTheInbox:{
       color:'#da3125',
-      backgroundColor:'rgba(255, 0, 0, 0.2)',
+      backgroundColor:'rgba(255, 0, 0, 0.2)!important',
       width:'200px',
       borderRadius:"0px 12px 12px 0px"
     },
