@@ -2,9 +2,22 @@
     font-weight: bold !important;
    
 }
+#boldText {
+    font-weight: bold !important;
+}
 .active .MuiListItem-button{
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0.04);
+}
+.active .inbox{
+    background-color: rgba(255, 0, 0, 0.2) !important;
+    width: 200px;
+    border-radius: 0px 12px 12px 0px;
+    color: #da3125;
+}
+.active .inbox .inboxIconColor{
+    color:#da3125;
+    padding-top: 5px;
 }
 .MuiListItem-button{
     height: 32px !important;

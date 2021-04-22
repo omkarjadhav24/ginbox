@@ -136,7 +136,7 @@ const renderMenu = (
                 <ChevronLeftIcon style={{position:'relative',left:props.open ? '820px' :props.ropen ? '950px':'985px'}} fontSize="small"/>
                 </Tooltip>
               </ListItem>
-              <NavLink to="/details" >
+              <NavLink to="/inbox/details" >
               <ListItem className={classes.inboxListHover}  id="inboxList" style={{backgroundColor:'#f5f7f7'}}>
                 <>
               <Tooltip title="Select" placement="bottom">
@@ -159,7 +159,7 @@ const renderMenu = (
               </ListItem>
               </NavLink>
               <Divider/>
-              <NavLink to="/details" >
+              <NavLink to="/inbox/details" >
               <ListItem className={classes.inboxListHover}  id="inboxList" style={{backgroundColor:'#f5f7f7'}}>
                 <>
               <Tooltip title="Select" placement="bottom">

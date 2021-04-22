@@ -145,11 +145,11 @@ const useStyles = makeStyles((theme) => ({
       width:'200px',
       borderRadius:"0px 12px 12px 0px"
     },
-    inboxIconRedColor:{
-      color:'#da3125',
-      paddingTop:'5px'
+    // inboxIconRedColor:{
+    //   color:'#da3125',
+    //   paddingTop:'5px'
 
-    },
+    // },
     onHoverColor:{
         width:'200px',
         borderRadius:"0px 12px 12px 0px"
@@ -166,6 +166,12 @@ const useStyles = makeStyles((theme) => ({
         duration: theme.transitions.duration.enteringScreen,
       }),
       marginLeft: 0,
+    },
+    inboxDivColor:{
+      backgroundColor: "rgba(255, 0, 0, 0.2) !important",
+      width: "200px",
+      borderRadius: "0px 12px 12px 0px",
+      color: "#da3125"
     }
 }));
 const SideiDrawer=()=> {
@@ -176,6 +182,7 @@ const SideiDrawer=()=> {
   // states
   const [open, setOpen] =useState(false);
   const [sideMenuClick,setSideMenuClick]=useState(false)
+  const [inboxColor,setInboxColor]=useState(true);
   const [ropen, setROpen] =useState(false);
   const [more, setMore] =useState(false);
   const [categories, setCategories] =useState(false);
@@ -190,7 +197,8 @@ const SideiDrawer=()=> {
   // onclick side drawer menu drawer remains open
   const handleDrawerOpenOnSideDrawerMenuClick = () => {
     setOpen(true);
-    setSideMenuClick(true)
+    setSideMenuClick(true);
+    setInboxColor(false)
   };
   // for toggling the right side bar onClick
   const rightHandleDrawerOpen = () => {
@@ -250,11 +258,11 @@ const SideiDrawer=()=> {
             
         {/* <Divider /> */}
         <List  className={classes.heightOfUl} dense={true}>
-        <NavLink onClick={()=>handleDrawerOpenOnSideDrawerMenuClick()} exact={true} activeClassName={classes.is_active} to="/inbox">
-        <Tooltip title="Inbox" placement="right-start">
-            <ListItem button className={!open ?null:classes.coluringToTheInbox} >
+        <NavLink onClick={()=>{handleDrawerOpenOnSideDrawerMenuClick();setInboxColor(true)}} exact={true} activeClassName={classes.is_active} to="/inbox">
+        <Tooltip  title="Inbox" placement="right-start">
+            <ListItem button id={inboxColor ? "fw":null} className="inbox"  >
              <ListItemIcon><div className={open ? null :classes.divBackgroundColor} >
-              <InboxIcon className={classes.inconSizeDecrease} className={classes.inboxIconRedColor}/>
+              <InboxIcon style={{paddingTop:'5px'}} className={classes.inconSizeDecrease} className="inboxIconColor"/>
               </div></ListItemIcon>
               <ListItemText id="boldText" primary="Inbox" />
             </ListItem>
@@ -490,7 +498,7 @@ const SideiDrawer=()=> {
         <div className={classes.toolbar} />
         <div style={{height:'700px',backgroundColor:'white', width:open ? '1124px':ropen ? '1236px':'12890px',overflow:'hidden'}}  >
           <Switch>
-                <Route path="/"  render={(props) =><Inbox  open={open} ropen={ropen} {...props} />}   exact />
+                <Route path="/" component={Inbox} exact />
                 <Route path="/inbox" component={Inbox} exact />
                 <Route path="/starred" component={Starred} exact />
                 <Route path="/snoozed" component={Snoozed} exact />
@@ -501,7 +509,12 @@ const SideiDrawer=()=> {
                 <Route path="/chats" component={Chat} exact />
                 <Route path="/allmail" component={AllMail} exact />
                 <Route path="/trash" component={Trash} exact />
-                <Route path="/details" component={Details} exact />
+                {/* <Route path="/inbox/details" component={Details} exact /> */}
+                <Route path="/inbox" render={({ match: { url } }) => (
+                <>
+                <Route path={`${url}/`} component={Inbox} exact />
+                <Route path={`${url}/details`} component={Details} />
+                </>)}/>
           </Switch>
         </div>
         <div  id="shoeRightBar" onClick={()=>rightHandleDrawerOpen()}  style={{width:'50px',position:'absolute',bottom:'0px',right:'-24px'}}>
