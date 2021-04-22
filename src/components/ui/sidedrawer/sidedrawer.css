@@ -2,8 +2,11 @@
     font-weight: bold !important;
    
 }
-#boldText {
+#fw .MuiTypography-displayBlock {
     font-weight: bold !important;
+}
+#fw .inboxIconColor{
+    color:#da3125;
 }
 .active .MuiListItem-button{
     text-decoration: none;

@@ -173,6 +173,10 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: "0px 12px 12px 0px",
       color: "#da3125"
     }
+    // divBackgroundColor:{
+    //   backgroundColor:'rgba(255, 0, 0, 0.2)',
+    //   borderRadius:'50%'
+    // }
 }));
 const SideiDrawer=()=> {
     // consume all styles
@@ -193,6 +197,7 @@ const SideiDrawer=()=> {
   const handleDrawerOpen = () => {
     let prevOpen=open
     setOpen(!prevOpen);
+    setSideMenuClick(false);
   };
   // onclick side drawer menu drawer remains open
   const handleDrawerOpenOnSideDrawerMenuClick = () => {
@@ -260,7 +265,7 @@ const SideiDrawer=()=> {
         <List  className={classes.heightOfUl} dense={true}>
         <NavLink onClick={()=>{handleDrawerOpenOnSideDrawerMenuClick();setInboxColor(true)}} exact={true} activeClassName={classes.is_active} to="/inbox">
         <Tooltip  title="Inbox" placement="right-start">
-            <ListItem button id={inboxColor ? "fw":null} className="inbox"  >
+            <ListItem button id={inboxColor ? "fw":null} className="inbox" className={inboxColor ?  classes.inboxDivColor : classes.onHoverColor} >
              <ListItemIcon><div className={open ? null :classes.divBackgroundColor} >
               <InboxIcon style={{paddingTop:'5px'}} className={classes.inconSizeDecrease} className="inboxIconColor"/>
               </div></ListItemIcon>
@@ -268,7 +273,7 @@ const SideiDrawer=()=> {
             </ListItem>
         </Tooltip>
         </NavLink>
-        <NavLink onClick={()=>{SetSearchMessage("is:starred");handleDrawerOpenOnSideDrawerMenuClick();}} to="/starred">
+        <NavLink onClick={()=>{handleDrawerOpenOnSideDrawerMenuClick();}} to="/starred">
         <Tooltip title="Starred" placement="right-start">
             <ListItem button className={classes.onHoverColor}>
               <ListItemIcon><GradeRoundedIcon className={classes.inconSizeDecrease} /></ListItemIcon>
@@ -276,7 +281,7 @@ const SideiDrawer=()=> {
             </ListItem> 
         </Tooltip>
         </NavLink>
-        <NavLink onClick={()=>{SetSearchMessage("in:snoozed");handleDrawerOpenOnSideDrawerMenuClick();}} to="/snoozed">
+        <NavLink onClick={()=>{handleDrawerOpenOnSideDrawerMenuClick();}} to="/snoozed">
         <Tooltip title="Snoozed" placement="right-start">
             <ListItem button className={classes.onHoverColor}>
               <ListItemIcon><WatchLaterRoundedIcon className={classes.inconSizeDecrease}/></ListItemIcon>
@@ -284,7 +289,7 @@ const SideiDrawer=()=> {
             </ListItem> 
         </Tooltip>
         </NavLink>
-        <NavLink onClick={()=>{SetSearchMessage("in:sent");handleDrawerOpenOnSideDrawerMenuClick();}}  to="/sent">
+        <NavLink onClick={()=>{handleDrawerOpenOnSideDrawerMenuClick();}}  to="/sent">
         <Tooltip title="Sent" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><SendIcon className={classes.inconSizeDecrease}/></ListItemIcon>
@@ -292,7 +297,7 @@ const SideiDrawer=()=> {
             </ListItem>
         </Tooltip>
         </NavLink>
-        <NavLink onClick={()=>{SetSearchMessage("in:draft");handleDrawerOpenOnSideDrawerMenuClick();}} to="/draft">
+        <NavLink onClick={()=>{handleDrawerOpenOnSideDrawerMenuClick();}} to="/draft">
         <Tooltip title="Draft" placement="right-start">
             <ListItem button className={classes.onHoverColor} >
               <ListItemIcon><DescriptionIcon className={classes.inconSizeDecrease}/></ListItemIcon>
